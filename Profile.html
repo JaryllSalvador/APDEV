@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume</title>
+</head>
+<style>
+  .mainDiv{
+    margin: auto;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .leftDiv{
+    width: 25%;
+    height: 100%;
+  }
+  .rightDiv{
+    width: 75%;
+    height: 100%;
+  }
+  .mainDiv-Inner{
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .leftDiv-Inner{
+    width: 43%;
+    height: 100%;
+  }
+  .rightDiv-Inner{
+    width: 80%;
+    height: 100%;
+  }
+  img.PRF{
+    border-radius: 50%;
+    width: 180px;
+    margin-top: 30px;
+    margin-left: 50px;
+    vertical-align: middle;
+  }
+  img.HNDL {
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    margin-top: 8px;
+  }
+  .HNDL-Container {
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+  }
+  .DTL{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .DSC-Box {
+    background-color: seagreen;
+    border-radius: 15px;
+    width: 100%;
+    height: 30%;
+    border: 5px solid seagreen;
+    margin-top: 1%;
+    margin-left: 1.9%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .TITLE {
+    letter-spacing: 1px;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size:xx-large;
+    font-weight: bold;
+    color: seagreen;
+  }
+  hr.BRDR {
+    border-top: 2px solid #5c5c5c;
+    border-bottom: 0px solid #5c5c5c;
+    line-height: .5px;
+    margin-left: 20px;
+  }
+  hr.BRDR2{
+    border-top: 1.5px solid #5c5c5c;
+    border-bottom: 0px solid #5c5c5c;
+    line-height: 0.1;
+    margin-left: 9px;
+  }
+  .LANG-Div {
+    width: 30%;
+    height: 100%;
+  }
+  .LANG-Prog {
+    letter-spacing: 0.2px;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: medium;
+    font-weight: bold;
+    color: black;
+  }
+  h2.NAME{
+    text-align: left;
+    letter-spacing: 1px;
+    line-height: 1;
+    color: aliceblue;
+    margin-left: 1.5%;
+  }
+  h4.PROFESSION {
+    text-align: left;
+    font-weight:bold;
+    letter-spacing: 0.4px;
+    line-height: 0.1;
+    color: aliceblue;
+    margin-left: 1.5%;
+  }
+  p.USERDESC {
+    text-align: left;
+    font-weight: lighter;
+    font-size: medium;
+    color:azure;
+    margin-left: 1.5%;
+  }
+  meter {
+    width: 210px;
+    height: 25px;
+  }
+  .YEAR{
+    text-align: center;
+  }
+  .YEAR-Desc {
+    text-align: left;
+    color: seagreen;
+  }
+  p.BLACKTEXT{
+    color: black;
+  }
+</style>
+<body>
+<div class="mainDiv">
+  <div class="leftDiv">
+    <img class="PRF" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+    <div class="HNDL-Container">
+      <div class="DTL">
+        STUDENT ACCESS
+      </div> <!--DTL 1 CLOSE-->
+      <div class ="DTL">
+        ADMIN ACCESS
+      </div>  <!--DTL 2 CLOSE-->
+    </div>  <!--HNDL CONTAINER CLOSE-->
+  </div>      <!--LEFT DIV CLOSE-->
+  <div class="rightDiv">
+    <div class="DSC-Box">
+      <h2 class="NAME">PROFILE NAME</h2>
+      <hr class="BRDR2">
+      <p class="USERDESC">PROFILE DESCRIPTION</p>
+    </div> <!--DSC BOX CLOSE-->
+    <div class="TITLE">CURRENT RESERVATIONS</div>
+    <hr class="BRDR">
+    <div class="mainDiv-Inner">
+      <div class="leftDiv-Inner">
+        <div class="YEAR">
+          December 25,2023
+        </div>
+      </div>
+      <div class="rightDiv-Inner">
+        <div class="YEAR-Desc">
+          <strong>ROOM 2212</strong>
+        </div>
+      </div>
+    </div>
+    <div class="mainDiv-Inner">
+      <div class="leftDiv-Inner">
+        <div class="YEAR">
+          January 2, 2024
+        </div>
+      </div>
+      <div class="rightDiv-Inner">
+        <div class="YEAR-Desc">
+          <strong>ROOM 5000</strong>
+        </div>
+      </div>
+    </div>
+    <div class="mainDiv-Inner">
+      <div class="leftDiv-Inner">
+        <div class="YEAR">
+          August 26, 2024
+        </div>
+      </div>
+      <div class="rightDiv-Inner">
+        <div class="YEAR-Desc">
+          <strong>FACULTY ROOM</strong>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div> <!--RIGHT DIV CLOSE-->
+
+</div>
+</body>
+</html>
