@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        .main-container {
+            display: flex;
+            flex-direction: column;
+        }
+        .big-container {
+            display: flex;
+            background-color: yellow;
+            padding: 20px;
+            gap: 20px;
+        }
+        .big-container-text {
+            display: flex;
+            flex-direction: column;
+            background-color: red;
+            justify-content: center;
+            width: 70%;
+        }
+        .big-container-text > button {
+            width: 10%;
+        }
+        .big-container > img {
+            max-width: 30%;
+        }
+
+        .team-container {
+            display: flex;
+            background-color: orange;
+        }
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            background-color: aliceblue;
+            align-items: center;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .team-member > img {
+            max-width: 50%;
+        }
+
+        .footer {
+            display: flex;
+            background-color: blue;
+            justify-content: center;
+        }
+
+        .body-parent {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .parent-row { display: flex; }
+
+        .header-item {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            background-color: aqua;
+        }
+
+        .header-container {
+            display: flex;
+            width: 100%;
+            background-color: rgb(68, 151, 151);
+        }
+
+        .logo { width: 20% }
+
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+            justify-content: right;
+            background-color: rgb(175, 172, 185);
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+
+        <!-- ======= Header Section ======= -->
+    <div class="body-parent">
+        <div class="parent-row">
+            <div class="header-item">
+                <div class="header-container">
+                    <div class="logo"><a href="#">Glu</a></div>
+                    
+                    <div class="navbar">
+                        <a href="#home">Home</a>
+                        <a href="#news">Reserve</a>
+                        <div class="dropdown">
+                          <button class="abtbtn">About</button>
+                          <div class="dropdown-content">
+                            <a href="#">The Website</a>
+                            <a href="#">The Team</a>
+                          </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="abtbtn">Profile</button>
+                            <div class="dropdown-content">
+                                <a href="#">View Profile</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- ======= Home Section ======= -->
+        <div class="big-container">
+            <div class="big-container-text">
+                <h1>Reserve with Glu!</h1>
+                <p>ghee kaye ghee kaye ghee kaye</p>
+                <button type="button">Reserve Now</button>
+            </div>
+            <img src="https://i.pinimg.com/originals/9d/07/b1/9d07b1ae352de4705b396de1e5d79f1f.jpg">
+        </div>
+
+        <p>- ABOUT -</p>
+
+        <!-- ======= About Section ======= -->
+        <div class="big-container">
+            <img src="https://i.pinimg.com/originals/9d/07/b1/9d07b1ae352de4705b396de1e5d79f1f.jpg">   
+            <div class="big-container-text">
+                <h1>About</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tenetur alias facere a ut aliquid quaerat velit, fugiat quidem incidunt possimus? Vel maxime culpa quasi mollitia rem. Eum, quia consequuntur.</p>
+            </div>
+        </div>
+
+        <p>- TEAM -</p>
+        
+        <!-- ======= Teams Section ======= -->
+        <div class="team-container">
+            <div class="team-member">
+                <img src="https://i.pinimg.com/originals/9d/07/b1/9d07b1ae352de4705b396de1e5d79f1f.jpg">
+                <p>name</p>
+            </div>
+            <div class="team-member">
+                <img src="https://i.pinimg.com/originals/9d/07/b1/9d07b1ae352de4705b396de1e5d79f1f.jpg">
+                <p>name</p>
+            </div>
+            <div class="team-member">
+                <img src="https://i.pinimg.com/originals/9d/07/b1/9d07b1ae352de4705b396de1e5d79f1f.jpg">
+                <p>name</p>
+            </div>
+            <div class="team-member">
+                <img src="https://i.pinimg.com/originals/9d/07/b1/9d07b1ae352de4705b396de1e5d79f1f.jpg">
+                <p>name</p>
+            </div>
+        </div>
+
+        <!-- ======= Footer ======= -->
+        <div class="footer">
+            <p>footer</p>
+        </div>
+    </div>
+</body>
+</html>
