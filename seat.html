@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve Page</title>
+    <style>
+        /* CSS styles go here */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f6f5f7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: -20px 0 50px;
+            
+        }
+        
+        h1 {
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        p {
+            font-size: 14px;
+            font-weight: 100;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+            margin: 20px 0 30px;
+        }
+        
+        span {
+            font-size: 12px;
+        }
+        
+        a {
+            color: #0052cc;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        .body-container {
+            border-radius: 8px;
+            display: flex;
+            background-color: #ebebeb;
+            justify-content: center;
+            gap: 2%;
+            width: 100%;
+            align-items: stretch;
+        }
+        
+        .reserve-screen {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            height: 500px;
+            margin: 25px;
+            padding-top: 25px;
+            align-items: center;
+            background-color: rgb(62, 70, 159);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .front {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            height: 10%;
+            color: #f1f1f1;
+            letter-spacing: 5px;
+            background-color: #351d1a;
+            border-radius: 10px;
+            width: 100%;
+        }
+        
+        .bounded-box {
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.19); /* Slightly lighter shadow for distinction */            margin-top: 25px;
+            justify-content: space-between;
+            margin-top: 25px; 
+            padding: 20px; 
+            background-color: #85a22c; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        
+        .details-section {
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.19);
+            margin-top: 90px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 70%; 
+            margin: auto; 
+        }
+        
+        .time-slot {
+            display: flex;
+            align-items: center;
+        }
+        
+        .time-slot > select {
+            margin-left: 10px;
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .table {
+            display: flex;
+            box-shadow: 0 5px 2px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.22);
+            border-radius: 10px;
+            justify-content: center;
+            gap: 1px;
+        }
+        
+        .seat {
+            padding: 20px;
+            height: 20px;
+            width: 20px;
+            border-right: 1px solid rgb(114, 66, 66);
+        }
+        
+        .seat:nth-child(3) {
+            border-right: none;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        
+        .seat:nth-child(1) {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        
+        .button {
+            border-radius: 20px;
+            border: 1px solid #195092;
+            background-color: #0052cc;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.22);
+        }
+        
+        .button:hover {
+            background-color: #f2f8fe;
+            color: #3d608e;
+        }
+        
+        .select-wrapper select {
+            padding: 10px;
+            border-radius: 100px;
+            border: 1px solid #000000;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        .select-wrapper select:focus {
+            border-color: #2b87fd;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR HERE -->
+    <h1>navbar here</h1>
+    <div class="body-container">
+        <div id="reserve-screen" class="reserve-screen bounded-box">
+            <div class="row" id="0">
+                <div class="table" id="0">
+                    <div class="seat" id="0"></div>
+                    <div class="seat" id="1"></div>
+                    <div class="seat" id="2"></div>
+                </div>
+                <div class="table" id="1">
+                    <div class="seat" id="3"></div>
+                    <div class="seat" id="4"></div>
+                    <div class="seat" id="5"></div>
+                </div>
+                <div class="table" id="2">
+                    <div class="seat" id="6"></div>
+                    <div class="seat" id="7"></div>
+                    <div class="seat" id="8"></div>
+                </div>
+            </div>
+            <div class="row" id="1">
+                <div class="table" id="3">
+                    <div class="seat" id="9"></div>
+                    <div class="seat" id="10"></div>
+                    <div class="seat" id="11"></div>
+                </div>
+                <div class="table" id="4">
+                    <div class="seat" id="12"></div>
+                    <div class="seat" id="13"></div>
+                    <div class="seat" id="14"></div>
+                </div>
+                <div class="table" id="5">
+                    <div class="seat" id="15"></div>
+                    <div class="seat" id="16"></div>
+                    <div class="seat" id="17"></div>
+                </div>
+            </div>
+            <div class="row" id="2">
+                <div class="table" id="6">
+                    <div class="seat" id="18"></div>
+                    <div class="seat" id="19"></div>
+                    <div class="seat" id="20"></div>
+                </div>
+                <div class="table" id="7">
+                    <div class="seat" id="21"></div>
+                    <div class="seat" id="22"></div>
+                    <div class="seat" id="23"></div>
+                </div>
+                <div class="table" id="8">
+                    <div class="seat" id="24"></div>
+                    <div class="seat" id="25"></div>
+                    <div class="seat" id="26"></div>
+                </div>
+            </div>
+            <div class="row" id="3">
+                <div class="table" id="9">
+                    <div class="seat" id="27"></div>
+                    <div class="seat" id="28"></div>
+                    <div class="seat" id="29"></div>
+                </div>
+                <div class="table" id="10">
+                    <div class="seat" id="30"></div>
+                    <div class="seat" id="31"></div>
+                    <div class="seat" id="32"></div>
+                </div>
+                <div class="table" id="11">
+                    <div class="seat" id="33"></div>
+                    <div class="seat" id="34"></div>
+                    <div class="seat" id="35"></div>
+                </div>
+            </div>
+            <div class="row" id="4">
+                <div class="table" id="12">
+                    <div class="seat" id="36"></div>
+                    <div class="seat" id="37"></div>
+                    <div class="seat" id="38"></div>
+                </div>
+                <div class="table" id="13">
+                    <div class="seat" id="39"></div>
+                    <div class="seat" id="40"></div>
+                    <div class="seat" id="41"></div>
+                </div>
+                <div class="table" id="14">
+                    <div class="seat" id="42"></div>
+                    <div class="seat" id="43"></div>
+                    <div class="seat" id="44"></div>
+                </div>
+            </div>
+            <span class="front">front</span>
+        </div>
+        <div class="details-section">
+            <h1>Create Reservation</h1>
+                <div class="time-slot select-wrapper">
+                    <p>Time Slot:</p>
+                    <select name="Time Slots" id="time-slots" class="select-wrapper">
+                        <option value="915">9:15AM-10:45AM</option>
+                        <option value="1100">11:00AM-12:30PM</option>
+                        <option value="1245">12:45PM-2:15PM</option>
+                        <option value="230">2:30PM-4:00PM</option>
+                    </select>
+                </div>
+            <p id="seat-number">no seat selected.</p>
+            <button id="reserve" class="button">Reserve</button>
+        </div>
+    </div>
+    <!-- FOOTER HERE -->
+    <h1>footer here</h1>
+
+    <script>
+        // JavaScript code goes here
+        let reserve = document.getElementById('reserve');
+        let seatNumber = document.getElementById('seat-number');
+
+        let seats = Array.from(document.getElementsByClassName('seat'));
+
+        let availableSeats = Array(45).fill(null);
+        // For demonstration purposes, some seats are marked as occupied
+        availableSeats[20] = "Reever";
+        availableSeats[22] = "Abigail";
+        availableSeats[0] = "Ghee";
+        availableSeats[42] = "Jaryll";
+        let selectedSeat = null;
+
+        const reserve_seat = () => {
+            seats.forEach((seat, index) => {
+                seat.style.backgroundColor = availableSeats[index] !== null ? '#5b6062' : '#e8eae9';
+                seat.addEventListener('click', (e) => {
+                    const id = e.target.id;
+                    if (availableSeats[id] !== null) {
+                        seatNumber.textContent = "This seat is occupied by: " + availableSeats[id];
+                        if (selectedSeat !== null) {
+                            selectedSeat.style.backgroundColor = '#e8eae9';
+                        }
+                        selectedSeat = null;
+                        return;
+                    }
+
+                    if (selectedSeat !== null) {
+                        selectedSeat.style.backgroundColor = '#e8eae9';
+                    }
+
+                    e.target.style.backgroundColor = '#7fc4ea';
+                    seatNumber.textContent = "Seat #" + (parseInt(id) + 1);
+                    selectedSeat = e.target;
+                });
+            });
+        };
+
+        reserve_seat();
+    </script>
+</body>
+</html>
