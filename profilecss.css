@@ -107,3 +107,41 @@ body {
     cursor: pointer;
     margin-left: 10px;
 }
+.profile-info {
+    padding: 20px;
+    position: relative;
+}
+
+.name-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-account {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.delete-button {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}
+

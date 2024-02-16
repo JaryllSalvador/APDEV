@@ -14,10 +14,9 @@
       <button class="button" onclick="window.location.href='logout.html';">Logout</button>
     </div>
     <span class="logo">
-      <img src="small_photo.jpg" alt="Small Photo">
       comluv.
     </span>
-    <img class="profile-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile Picture">
+    <img class="profile-img" src="https://i.pinimg.com/736x/83/8a/ba/838abacdffa9b90292d695b290c29111.jpg" alt="Profile Picture">
     <div class="handle">
       <div>STUDENT ACCESS</div>
       <div>ADMIN ACCESS</div>
@@ -25,9 +24,15 @@
   </div>
 
   <div class="profile-info">
-    <h2 class="name">Profile Name</h2>
-    <p class="description">Profile Description</p>
+    <div class="name-container">
+      <h2 class="name">Mina Sharon Myoi</h2>
+      <button class="edit-button" onclick="window.location.href='edit.html';">Edit Account</button>
+    </div>
+    <p class="description">Mina_Myoi@dlsu.edu.ph</p>
+    <p class="description">BS-QTPIE</p>
+    <p class="description">122143143</p>
   </div>
+
 
   <div class="reservation">
     <h2>Current Reservations</h2>
@@ -45,6 +50,8 @@
     </div>
   </div>
 </div>
-
+<div class="delete-account">
+  <button class="delete-button" onclick="deleteAccount()">Delete Account</button>
+</div>
 </body>
 </html>
