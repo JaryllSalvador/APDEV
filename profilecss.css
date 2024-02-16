@@ -53,16 +53,72 @@ body {
 
 .profile-info {
     padding: 20px;
+    position: relative;
+}
+
+.name-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .name {
     font-size: 24px;
-    margin-top: 0;
+    margin: 0;
 }
 
-.description {
-    font-size: 18px;
-    color: #777;
+/* Replacing button design */
+.edit-button,
+.button,
+.delete-button {
+    border-radius: 20px;
+    border: 1px solid #195092;
+    background-color: #0052cc;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.22);
+}
+
+.edit-button.over-btn,
+.button.over-btn {
+    background: transparent;
+    border-color: #fff;
+}
+
+/* Hover and focus effects */
+.edit-button:active,
+.button:active,
+.delete-button:active {
+    transform: scale(0.95);
+}
+
+.edit-button:focus,
+.button:focus,
+.delete-button:focus {
+    outline: none;
+}
+
+/* Additional styles for the delete button */
+.delete-account {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-button {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .reservation {
@@ -105,43 +161,4 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 10px;
 }
-.profile-info {
-    padding: 20px;
-    position: relative;
-}
-
-.name-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.edit-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.delete-account {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.delete-button {
-    background-color: #ff0000;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.delete-button:hover {
-    background-color: #cc0000;
-}
-
