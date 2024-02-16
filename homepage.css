@@ -26,7 +26,7 @@ body { height: 100vh; }
     color: white;
 }
 
-.buttons-container > button {
+.buttons-container > a {
     min-width: 20%;
     padding: 10px;
     margin: 20px 10px 0px 0px;
