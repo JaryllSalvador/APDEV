@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+body { height: 100vh; }
+
+div {
+    font-family: 'Montserrat', sans-serif;
+}
+
+div > h1 { font-weight: bolder; }
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.big-container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    align-items: center;
+}
+
+.big-container-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    padding: 5%;
+}
+
+.about {
+    border-radius: 30px;
+    border: 0px solid #195092;
+    background-color: #0052cc;
+    color: white;
+}
+
+.buttons-container > a > button {
+    min-width: 20%;
+    margin: 20px 10px 0px 0px;
+    border-radius: 20px;
+    border: 0px solid #195092;
+    background-color: #0052cc;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.22);
+}
+
+.big-container > img {
+    max-width: 40%;
+    height: fit-content;
+    margin: 20px;
+}
+
+.team-container { display: flex; }
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    background-color: #CADDFF;
+    align-items: center;
+    margin: 15px;
+    border-radius: 10px;
+    color: #0052cc;
+    max-width: 100%;
+    height: auto;
+}
+
+.team-member > img {
+    max-width: 100%;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.footer-container {
+    display: flex;
+    background-color: #0052cc;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+}
+
+/* START OF NAVBAR */
+
+.header-item {
+    display: flex;
+    flex-direction: row;
+    padding: 2px;
+    height: auto;
+    margin-bottom: 2%;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #0052cc;
+}
+
+.logo { padding-left: 2%; }
+
+.logo-text {
+    font-size: 20px; 
+    font-weight: bolder;
+}
+
+.logo-img {
+    height: 20px;
+    width: auto; 
+    vertical-align: middle; 
+    filter: invert(100%);
+}
+
+.items { padding-right: 2%; }
+
+.shadow {
+    border-bottom: 2px solid #d9d6d6; 
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.25), 0 0px 0px rgba(0,0,0,0.1);
+}
+
+/* END OF NAVBAR */
+
+.spacer { margin: 15px; }
+
+.title-container { display: flex; }
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.name {
+    font-weight: bold;
+    font-size: large;
+}
+
+.role { font-variant: small-caps; }
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
