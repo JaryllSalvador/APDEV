@@ -2,8 +2,8 @@ const express = require('express');
 const server = express();
 
 const bodyParser = require('body-parser');
-server.use(express.json()); 
-server.use(express.urlencoded({ extended: true }));
+server.use(bodyParser.json()); 
+server.use(bodyParser.urlencoded({ extended: true }));
 
 const handlebars = require('express-handlebars');
 server.set('view engine', 'hbs');
@@ -13,8 +13,8 @@ server.engine('hbs', handlebars.engine({
 
 server.use(express.static('public'));
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/logindb').catch(error => {throw error});
+const login = require('./login.js')
+server.use('/login', login);
 
 server.get('/', (req, res) => {
     res.render('main',{
