@@ -22,7 +22,7 @@ server.post('/read-user', (req, resp) => {
         // resp.send('username and password match');
         
         // - TODO: sa gagawa ng profile, change this nalang to pass the data u need from mongoose
-        resp.redirect('/homepage')
+        resp.redirect('/homepage') 
 
       }else{
       // - TODO: error screen
