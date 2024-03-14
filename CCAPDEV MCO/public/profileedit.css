@@ -10,7 +10,9 @@ body {
     background-attachment: fixed;
 }
 
-div > button { font-family: 'Montserrat', sans-serif; }
+div > button {
+    font-family: 'Montserrat', sans-serif;
+}
 
 .container {
     max-width: 900px;
@@ -75,6 +77,14 @@ div > button { font-family: 'Montserrat', sans-serif; }
     margin: 0;
 }
 
+.name input,
+.description input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-left: 10px; /* Adjusted margin */
+}
+
 .edit-button,
 .button,
 .delete-button {
@@ -84,7 +94,7 @@ div > button { font-family: 'Montserrat', sans-serif; }
     color: #fff;
     font-size: 12px;
     font-weight: bold;
-    padding: 12px 45px;
+    padding: 12px 20px; /* Adjusted padding */
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
@@ -119,7 +129,7 @@ div > button { font-family: 'Montserrat', sans-serif; }
 .delete-button {
     background-color: #ff0000;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 20px; /* Adjusted padding */
     margin: 0% 1% 2% 1%;
     border: none;
     border-radius: 5px;
@@ -162,7 +172,7 @@ div > button { font-family: 'Montserrat', sans-serif; }
 .button {
     background-color: #0052cc;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 20px; /* Adjusted padding */
     border: none;
     border-radius: 5px;
     cursor: pointer;

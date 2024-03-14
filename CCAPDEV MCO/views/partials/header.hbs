@@ -10,6 +10,21 @@
             <!-- Navigation items -->
             <div class="items">
                 <ul class="navbar-nav">
+                    <input type="text" id="searchInput">
+                    <button class="search" onclick="performSearch()">Search</button>
+
+                    <script>
+                        function performSearch() {
+                            var searchTerm = document.getElementById("searchInput").value;
+
+                            if (searchTerm.trim() !== '') {
+                                window.location.href = "http://localhost:9090/profile?user=" + encodeURIComponent(searchTerm);
+                            } else {
+                                alert("Please enter a search term.");
+                            }
+                        }
+                    </script>
+
                     <!-- Home link -->
                     <li class="nav-item">
                         {{#if user }}

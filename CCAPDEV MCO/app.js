@@ -23,10 +23,10 @@ server.get('/', (req, res) => {
         layout: 'index'
     });
 })
-server.get('/reserve_seat', (req, res) => {
+server.get('/homepage', (req, res) => {
     res.render('main',{
         user : req.query.user,
-        layout: 'reserve_seat'
+        layout: 'homepage'
     });
 })
 
@@ -44,13 +44,15 @@ server.get('/profile', async (req, res) => {
         res.status(500).send('Error retrieving user profile');
     }
 });
-server.get('/homepage', (req, res) => {
+
+
+server.get('/reserve_seat', (req, res) => {
     res.render('main',{
         user : req.query.user,
-        displayname : req.query.display_name,
-            layout: 'homepage'
-});
+        layout: 'reserve_seat'
+    });
 })
+
 
 server.get('/editprofile', async (req, res) => {
     try {

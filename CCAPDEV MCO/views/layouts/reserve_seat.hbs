@@ -9,99 +9,72 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <link rel="stylesheet" type="text/css" href="reserve_seat.css">
+    <link rel="stylesheet" type="text/css" href="./reserve_seat.css">
+    <link rel="stylesheet" type="text/css" href="./homepage.css">
+
 </head>
 <body>
-    {{> header this}}
+    <!-- ======= Header Section ======= -->
+    {{!-- <div class="header-item">
+        <nav class="navbar navbar-expand-sm navbar-dark shadow">
+            <div class="container">
+                <div class="mr-auto logo">
+                    <img class="logo-img" src="images/logo.png" alt="">
+                    <a class="navbar-brand logo-text" href="homepage.html">comluv.</a>
+                </div>
+
+                <div class="items">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="reserve_seat.html">Reserve</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.html#about">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Profile
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="profile.html">View Profile</a>
+                                <a class="dropdown-item" href="index.html">Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div> --}}
+    {{> header}}
+
     <div class="body-container">
-        <div id="reserve-screen" class="reserve-screen bounded-box">
-            <div class="row" id="0">
-                <div class="table" id="0">
-                    <div class="seat" id="0"></div>
-                    <div class="seat" id="1"></div>
-                    <div class="seat" id="2"></div>
-                </div>
-                <div class="table" id="1">
-                    <div class="seat" id="3"></div>
-                    <div class="seat" id="4"></div>
-                    <div class="seat" id="5"></div>
-                </div>
-                <div class="table" id="2">
-                    <div class="seat" id="6"></div>
-                    <div class="seat" id="7"></div>
-                    <div class="seat" id="8"></div>
-                </div>
-            </div>
-            <div class="row" id="1">
-                <div class="table" id="3">
-                    <div class="seat" id="9"></div>
-                    <div class="seat" id="10"></div>
-                    <div class="seat" id="11"></div>
-                </div>
-                <div class="table" id="4">
-                    <div class="seat" id="12"></div>
-                    <div class="seat" id="13"></div>
-                    <div class="seat" id="14"></div>
-                </div>
-                <div class="table" id="5">
-                    <div class="seat" id="15"></div>
-                    <div class="seat" id="16"></div>
-                    <div class="seat" id="17"></div>
+        {{!-- <div id="reserve-screen" class="reserve-screen bounded-box"> --}}
+
+        {{#each room_info}}
+            <div class="body-container">
+                <div id="{{room-id}}-{{time-slot}}" class="reserve-screen bounded-box">
+                    {{#each seats}}
+                    <div class="row" id="row-{{@index}}">
+                        {{#each this}}
+                        <div class="table" id="table-{{@index}}">
+                            {{#each this}}
+                            <div class="seat" id="{{seat-id}}" data-name="{{occupant}}" data-order="{{seat-order}}">
+                                {{!-- Seat ID: {{seat-id}}, zOrder: {{seat-order}}, Occupant: {{occupant}} --}}
+                            </div>
+                            {{/each}}
+                        </div>
+                        {{/each}}
+                    </div>
+                    {{/each}}
+                    <span class="front">front</span>
                 </div>
             </div>
-            <div class="row" id="2">
-                <div class="table" id="6">
-                    <div class="seat" id="18"></div>
-                    <div class="seat" id="19"></div>
-                    <div class="seat" id="20"></div>
-                </div>
-                <div class="table" id="7">
-                    <div class="seat" id="21"></div>
-                    <div class="seat" id="22"></div>
-                    <div class="seat" id="23"></div>
-                </div>
-                <div class="table" id="8">
-                    <div class="seat" id="24"></div>
-                    <div class="seat" id="25"></div>
-                    <div class="seat" id="26"></div>
-                </div>
-            </div>
-            <div class="row" id="3">
-                <div class="table" id="9">
-                    <div class="seat" id="27"></div>
-                    <div class="seat" id="28"></div>
-                    <div class="seat" id="29"></div>
-                </div>
-                <div class="table" id="10">
-                    <div class="seat" id="30"></div>
-                    <div class="seat" id="31"></div>
-                    <div class="seat" id="32"></div>
-                </div>
-                <div class="table" id="11">
-                    <div class="seat" id="33"></div>
-                    <div class="seat" id="34"></div>
-                    <div class="seat" id="35"></div>
-                </div>
-            </div>
-            <div class="row" id="4">
-                <div class="table" id="12">
-                    <div class="seat" id="36"></div>
-                    <div class="seat" id="37"></div>
-                    <div class="seat" id="38"></div>
-                </div>
-                <div class="table" id="13">
-                    <div class="seat" id="39"></div>
-                    <div class="seat" id="40"></div>
-                    <div class="seat" id="41"></div>
-                </div>
-                <div class="table" id="14">
-                    <div class="seat" id="42"></div>
-                    <div class="seat" id="43"></div>
-                    <div class="seat" id="44"></div>
-                </div>
-            </div>
-            <span class="front">front</span>
-        </div>
+        {{/each}}
+
+        {{!-- </div> --}}
         <div class="details-section">
             <h1>Create Reservation</h1>
                 <div class="time-slot select-wrapper">
@@ -125,7 +98,12 @@
             <button id="reserve" class="button">Reserve</button>
         </div>
     </div>
+    <!-- FOOTER HERE -->
+    {{!-- <div class="footer-container">
+        <span>&copy; Copyright Group 17 - Team #GHEE. All Rights Reserved.</span>
+    </div> --}}
     {{> footer}}
-    <script src="reserve_seat.js"></script>
+
+    <script src="scripts/reserve_seat.js"></script>
 </body>
 </html>
