@@ -48,6 +48,10 @@ div > button {
     filter: invert(100%);
 }
 
+.profile-container {
+    vertical-align: center;
+}
+
 .profile-img {
     border-radius: 50%;
     width: 180px;

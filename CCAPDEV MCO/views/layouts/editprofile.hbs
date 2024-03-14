@@ -17,53 +17,34 @@
         <div class="logo-container">
             <img src="images/logo.png" alt="" class="logo">comluv.
         </div>
-        <img class="profile-img" src="{{profile_picture}}" alt="Profile Picture">
+        <div class="profile-container">
+            <img class="profile-img" src="{{profile_picture}}" alt="Profile Picture">
+        </div>
+        <button class="edit-button" onclick="">Edit Avatar </button>
         <div class="handle">
             {{#if admin_access}}
                 <div>ADMIN ACCESS</div>
             {{else}}
                 <div>STUDENT ACCESS</div>
-            {{/if}}
+        {{/if}}
+
         </div>
     </div>
 
     <div class="profile-info">
         <div class="name-container">
-            <h2 class="name" onmouseover="showTextBox('name')" onmouseout="hideTextBox('name')">{{display_name}}</h2>
-            <input type="text" id="nameTextBox" class="hidden">
-            <button class="edit-button" onclick="window.location.href='profile?user={{user}}';">Finish</button>
+            <h2 class="name">{{display_name}}</h2>
+            <button class="edit-button" onclick="window.location.href='profile?user={{user}}';">Save</button>
         </div>
-        <p class="description">Username: <span onmouseover="showTextBox('username')" onmouseout="hideTextBox('username')">{{account_name}}</span><input type="text" id="usernameTextBox" class="hidden"></p>
-        <p class="description">Email: <span onmouseover="showTextBox('email')" onmouseout="hideTextBox('email')">{{profile_email}}</span><input type="text" id="emailTextBox" class="hidden"></p>
+        <p class="description">Username: {{account_name}}</p>
+        <p class="description">Email: {{profile_email}}</p>
     </div>
 
     <!-- Reservation Section Here -->
-
 </div>
 
 <div class="delete-account">
-    <button class="delete-button" onclick="confirmDelete()">Delete Account</button>
+    <button class="delete-button" onclick="deleteAccount()">Delete Account</button>
 </div>
-
-<script>
-    function showTextBox(id) {
-        document.getElementById(id + 'TextBox').classList.remove('hidden');
-    }
-
-    function hideTextBox(id) {
-        document.getElementById(id + 'TextBox').classList.add('hidden');
-    }
-
-    function confirmDelete() {
-        if (confirm("Are you sure you want to delete your account?")) {
-            // Proceed with deletion
-            // You can add your deletion logic here
-            alert("Account deleted successfully!");
-        } else {
-            // Do nothing or provide feedback
-            alert("Account deletion canceled.");
-        }
-    }
-</script>
 </body>
 </html>
