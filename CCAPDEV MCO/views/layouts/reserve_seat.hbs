@@ -96,6 +96,10 @@
                 </div>
             <p id="seat-number">No seat selected.</p>
             <button id="reserve" class="button">Reserve</button>
+            {{#if admin}}
+                <button id="editBtn" class="button">Edit Reservation</button>
+                <button id="deleteBtn" class="button">Delete Reservation</button>
+            {{/if}}
         </div>
     </div>
     <!-- FOOTER HERE -->

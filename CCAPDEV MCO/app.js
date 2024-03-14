@@ -1,6 +1,8 @@
 const express = require('express');
 const server = express();
 
+const mongoose = require('./server.js');
+
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -60,13 +62,29 @@ server.get('/search', async (req, res) => {
 });
 
 
-server.get('/reserve_seat', (req, res) => {
-    res.render('main',{
-        user : req.query.user,
-        layout: 'reserve_seat'
-    });
-})
+const roomsSchema = new mongoose.Schema({
+    "room-id": { type: String },
+    "time-slot": { type: String },
+    seats: [[[{ "seat-id": {type: Number}, "seat-order": {type: Number}, "is-occupied": {type: Boolean}, "occupant": {type: String}, "id-number": {type: Number} }]]]
+  },{ versionKey: false });
+  
+const roomsModel = mongoose.model('rooms', roomsSchema);
 
+server.get('/reserve_seat', async function(req, resp){
+    const user = req.query.user
+    const profile = await Profile.findOne({account_name : user}).exec();
+    roomsModel.find({}).lean().then(function(data){
+        resp.render('main',{
+            layout: 'reserve_seat',
+            title: 'Reserve Seat',
+            room_info: data,
+            user: req.query.user,
+            admin: profile.admin_access
+        });
+        console.log(req.query.user);
+        // console.log(profile.admin_access)
+    }).catch(err => {throw err});
+});
 
 server.get('/editprofile', async (req, res) => {
     try {
