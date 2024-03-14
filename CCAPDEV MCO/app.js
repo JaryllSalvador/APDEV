@@ -19,9 +19,9 @@ server.use('/login', login);
 
 server.get('/', (req, res) => {
     res.render('main',{
-
-        layout: 'index'
-    });
+        layout: 'index',
+        error: req.query.error == null ? "" : "Username and password does not match."
+      });
 })
 server.get('/reserve_seat', (req, res) => {
     res.render('main',{

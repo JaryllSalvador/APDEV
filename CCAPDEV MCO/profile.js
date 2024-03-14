@@ -1,6 +1,6 @@
-
-
-const mongoose = require('mongoose');
+const mongoose = require('./server.js');
+const express = require('express');
+const server = express.Router();
 
 const profileSchema = new mongoose.Schema({
     display_name: String,
