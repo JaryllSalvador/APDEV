@@ -70,4 +70,23 @@ function seatClicked(e) {
     // console.log(selectedSeat);
 }
 
+
 reserve_seat();
+
+$(document).ready(function() {
+    $('#rooms, #time-slots').on('change', function() {
+        // Get selected values
+        let room = $('#rooms').val();
+        let time = $('#time-slots').val();
+        
+        // Hide all room slots
+        $('.room-slot').hide();
+        
+        // Show selected room slot
+        let room_id = "#" + room + "-" + time;
+        $(room_id).show();
+    });
+    
+    // Trigger change event initially to show the default selected room and time
+    $('#rooms, #time-slots').trigger('change');
+});
