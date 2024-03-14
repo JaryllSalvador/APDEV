@@ -21,8 +21,8 @@ server.use('/login', login);
 
 server.get('/', (req, res) => {
     res.render('main',{
-
-        layout: 'index'
+        layout: 'index',
+        error: req.query.error ? "Invalid username or password." : ""
     });
 })
 server.get('/homepage', (req, res) => {
