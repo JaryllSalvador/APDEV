@@ -1,6 +1,8 @@
 const express = require('express');
 const server = express();
 
+const mongoose = require('./server.js')
+
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -42,7 +44,7 @@ const roomsSchema = new mongoose.Schema({
   
 const roomsModel = mongoose.model('rooms', roomsSchema);
 
-server.get('/', function(req, resp){
+server.get('/reserve_seat', function(req, resp){
     roomsModel.find({}).lean().then(function(data){
         resp.render('main',{
             layout: 'reserve_seat',
