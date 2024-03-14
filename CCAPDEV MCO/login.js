@@ -3,8 +3,8 @@ const express = require('express');
 const server = express.Router();
 
 const loginSchema = new mongoose.Schema({
-  user: { type: String },
-  pass: { type: String }
+    user: { type: String },
+    pass: { type: String }
 },{ versionKey: false });
 
 const loginModel = mongoose.model('login', loginSchema);
@@ -13,6 +13,7 @@ const loginModel = mongoose.model('login', loginSchema);
 
 server.post('/read-user', (req, resp) => {
     const searchQuery = { user: req.body.user, pass: req.body.pass };
+<<<<<<< HEAD
   
     loginModel.findOne(searchQuery).then(function(login){
       console.log('Finding user');
@@ -26,7 +27,24 @@ server.post('/read-user', (req, resp) => {
       // - TODO: error screen
         resp.redirect('/?error=true'); 
       }
+=======
+
+
+    loginModel.findOne(searchQuery).then(function(login){
+        console.log('Finding user');
+
+        if(login != undefined && login._id != null){
+            // resp.send('username and password match');
+
+            // - TODO: sa gagawa ng profile, change this nalang to pass the data u need from mongoose
+            resp.redirect(`/profile?user=${req.body.user}`)
+
+        }else{
+            // - TODO: error screen
+            resp.send('[ERROR] not match');
+        }
+>>>>>>> main
     }).catch(err => {throw err});
-  });
-  
-  module.exports = server
+});
+
+module.exports = server
