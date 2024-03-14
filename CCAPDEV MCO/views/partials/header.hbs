@@ -12,27 +12,46 @@
                 <ul class="navbar-nav">
                     <!-- Home link -->
                     <li class="nav-item">
-                        <a class="nav-link active" href="homepage">Home</a>
+                        {{#if user }}
+                            <a class="nav-link active" href="homepage?user={{user}}">Home</a>
+
+                        {{ else }}
+                            <a class="nav-link" href="homepage">Home</a>
+                        {{/if}}
                     </li>
                     <!-- Reserve link -->
                     <li class="nav-item">
-                        <a class="nav-link" href="reserve_seat">Reserve</a>
+                        {{#if user }}
+                            <a class="nav-link" href="reserve_seat?user={{user}}">Reserve</a>
+
+                        {{else}}
+                            <a class="nav-link" href="reserve_seat">Reserve</a>
+
+                        {{/if}}
                     </li>
                     <!-- About link -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        {{#if user }}
+                            <a class="nav-link" href="homepage#about?user={{user}}">About</a>
+                        {{else}}
+                            <a class="nav-link" href="homepage#about">About</a>
+
+                        {{/if}}
                     </li>
                     <!-- Profile dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Profile <!-- change this to acc name -->
+                            {{user}}
                         </a>
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <!-- View Profile option -->
-                            <a class="dropdown-item" href="profile">View Profile</a>
-                            <!-- Log Out option -->
-                            <a class="dropdown-item" href="/">Log Out</a>
+{{#if user }}
+                            <a class="dropdown-item" href="profile?user={{user}}">View Profile</a>
+    <!-- Log Out option -->
+    <a class="dropdown-item" href="/">Log Out</a>
+{{/if}}
+
                         </div>
                     </li>
                 </ul>

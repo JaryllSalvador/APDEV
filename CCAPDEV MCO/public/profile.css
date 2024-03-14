@@ -4,9 +4,9 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('https://i.pinimg.com/564x/c0/33/5b/c0335b54de6a71ee823ddf360af25305.jpg'); /* Add your image URL */
+    background-image: url('https://i.pinimg.com/564x/c0/33/5b/c0335b54de6a71ee823ddf360af25305.jpg');
     background-size: cover;
-    background-position: center; 
+    background-position: center;
     background-attachment: fixed;
 }
 
@@ -75,7 +75,6 @@ div > button { font-family: 'Montserrat', sans-serif; }
     margin: 0;
 }
 
-/* Replacing button design */
 .edit-button,
 .button,
 .delete-button {
@@ -98,7 +97,6 @@ div > button { font-family: 'Montserrat', sans-serif; }
     border-color: #fff;
 }
 
-/* Hover and focus effects */
 .edit-button:active,
 .button:active,
 .delete-button:active {
@@ -111,7 +109,6 @@ div > button { font-family: 'Montserrat', sans-serif; }
     outline: none;
 }
 
-/* Additional styles for the delete button */
 .delete-account {
     text-align: center;
     margin-top: 20px;
