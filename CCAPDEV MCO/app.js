@@ -23,17 +23,39 @@ server.get('/', (req, res) => {
         error: req.query.error == null ? "" : "Username and password does not match."
       });
 })
-server.get('/reserve_seat', (req, res) => {
-    res.render('main',{
-        user : req.query.user,
-        layout: 'reserve_seat'
-    });
-})
+
+
+
+// server.get('/reserve_seat', (req, res) => {
+//     res.render('main',{
+//         user : req.query.user,
+//         layout: 'reserve_seat'
+//     });
+// })
+
+
+const roomsSchema = new mongoose.Schema({
+    "room-id": { type: String },
+    "time-slot": { type: String },
+    seats: [[[{ "seat-id": {type: Number}, "seat-order": {type: Number}, "is-occupied": {type: Boolean}, "occupant": {type: String}, "id-number": {type: Number} }]]]
+  },{ versionKey: false });
+  
+const roomsModel = mongoose.model('rooms', roomsSchema);
+
+server.get('/', function(req, resp){
+    roomsModel.find({}).lean().then(function(data){
+        resp.render('main',{
+            layout: 'reserve_seat',
+            title: 'Reserve Seat',
+            room_info: data
+        });
+    }).catch(err => {throw err});
+});
+
 
 const Profile = require('./profile');
 server.get('/profile', async (req, res) => {
     try {
-
         const user = req.query.user
         console.log(user)
         const profile = await Profile.findOne({account_name : user}).exec();
