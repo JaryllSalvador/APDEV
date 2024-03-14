@@ -12,7 +12,7 @@ body {
 
 div > button { font-family: 'Montserrat', sans-serif; }
 
-.container {
+.--profile-container {
     max-width: 900px;
     margin: 40px auto;
     background-color: #fff;
@@ -21,7 +21,7 @@ div > button { font-family: 'Montserrat', sans-serif; }
     position: relative;
 }
 
-.profile-header {
+.--profile-header {
     background-color: #195092;
     color: #fff;
     padding: 15px;
@@ -31,7 +31,7 @@ div > button { font-family: 'Montserrat', sans-serif; }
     position: relative;
 }
 
-.logo-container {
+.--logo-container {
     font-size: 24px;
     font-weight: bold;
     color: #fff;
@@ -39,128 +39,77 @@ div > button { font-family: 'Montserrat', sans-serif; }
     flex-direction: row;
 }
 
-.logo-container > img {
+.--logo-container > img {
     width: auto;
     height: 30px;
     margin-right: 5px;
     filter: invert(100%);
 }
 
-.profile-img {
+.--profile-img {
     border-radius: 50%;
     width: 180px;
     margin-top: 20px;
 }
 
-.handle {
+.--handle {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 20px;
 }
 
-.profile-info {
+.--profile-info {
     padding: 20px;
     position: relative;
 }
 
-.name-container {
+.--name-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 5px;
 }
 
-.name {
+.--name {
     font-weight: bold;
     font-size: 24px;
     margin: 0;
 }
 
-.edit-button,
-.button,
-.delete-button {
-    border-radius: 20px;
-    border: 1px solid #195092;
-    background-color: #0052cc;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.22);
-}
-
-.edit-button.over-btn,
-.button.over-btn {
-    background: transparent;
-    border-color: #fff;
-}
-
-.edit-button:active,
-.button:active,
-.delete-button:active {
-    transform: scale(0.95);
-}
-
-.edit-button:focus,
-.button:focus,
-.delete-button:focus {
-    outline: none;
-}
-
-.delete-account {
-    text-align: center;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.delete-button {
-    background-color: #ff0000;
-    color: #fff;
-    padding: 10px 20px;
-    margin: 0% 1% 2% 1%;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.reservation {
+.--reservation {
     margin-top: 30px;
     padding: 20px;
     border-top: 1px solid #ddd;
 }
 
-.reservation h2 {
+.--reservation h2 {
     margin-top: 0;
 }
 
-.reservation-item {
+.--reservation-item {
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
 
-.reservation-date {
+.--reservation-date {
     font-size: 20px;
     color: #0052cc;
     margin-bottom: 5px;
 }
 
-.reservation-details {
+.--reservation-details {
     font-size: 18px;
     color: #0052cc;
 }
 
-.button-container {
+.--button-container {
     position: absolute;
     top: 10px;
     right: 10px;
 }
 
-.button {
+.--button {
     background-color: #0052cc;
     color: #fff;
     padding: 10px 20px;

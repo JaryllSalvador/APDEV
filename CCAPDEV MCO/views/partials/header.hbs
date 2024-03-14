@@ -18,7 +18,7 @@
                             var searchTerm = document.getElementById("searchInput").value;
 
                             if (searchTerm.trim() !== '') {
-                                window.location.href = "http://localhost:9090/profile?user=" + encodeURIComponent(searchTerm);
+                                window.location.href = `http://localhost:9090/search?user={{user}}&profile=${encodeURIComponent(searchTerm)}`;
                             } else {
                                 alert("Please enter a search term.");
                             }
