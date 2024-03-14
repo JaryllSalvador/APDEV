@@ -18,12 +18,9 @@ server.post('/read-user', (req, resp) => {
       console.log('Finding user');
   
       if(login != undefined && login._id != null){
-       
-        // - TODO: sa gagawa ng profile, change this nalang to pass the data u need from mongoose
         resp.redirect(`/profile?user=${req.body.user}`) 
 
       }else{
-      // - TODO: error screen
         resp.redirect('/?error=true'); 
       }
     }).catch(err => {throw err});
