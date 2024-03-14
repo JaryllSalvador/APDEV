@@ -38,7 +38,22 @@
         <p class="--description">Email: {{profile_email}}</p>
     </div>
     <!-- Reservation Section Here -->
-
-</div>
+    <div class="--reservation">
+        <h2 class="--name">Current Reservation</h2>
+        {{#each reservations as |res|}}
+            <div class="--reservation-item">
+                <p>Room ID: {{res.room-id}}</p>
+                <p>Time Slot: {{res.time-format}}</p>
+                <table>
+                    <tbody>
+                            <tr>
+                                <td>Seat Number: {{res.seats.seat-order}}</td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        {{/each}}
+    </div>
 </body>
+{{>footer}}
 </html>

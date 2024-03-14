@@ -33,7 +33,7 @@ server.get('/homepage', (req, res) => {
 })
 
 const Profile = require('./profile');
-server.get('/profile', async (req, res) => {
+server.get('/p--rofile', async (req, res) => {
     try {
 
         const user = req.query.user
@@ -47,21 +47,6 @@ server.get('/profile', async (req, res) => {
     }
 });
 
-server.get('/search', async (req, res) => {
-    try {
-
-        const user = req.query.user
-        console.log(user)
-        const profile = await Profile.findOne({account_name : req.query.profile}).exec();
-        res.render('main', { layout: 'search', profile: req.query.profile, user: user, display_name: profile.display_name ,account_name:profile.account_name ,profile_email:profile.profile_email, admin_access:profile.admin_access, student_access:profile.student_access,profile_picture:profile.profile_picture });
-
-    } catch (err) {
-        console.error('Error retrieving user profile:', err);
-        res.status(500).send('Error retrieving user profile:');
-    }
-});
-
-
 const roomsSchema = new mongoose.Schema({
     "room-id": { type: String },
     "time-slot": { type: String },
@@ -69,6 +54,92 @@ const roomsSchema = new mongoose.Schema({
   },{ versionKey: false });
   
 const roomsModel = mongoose.model('rooms', roomsSchema);
+
+server.get('/search', async (req, resp) => {
+    try {
+        const user = req.query.user
+        console.log(user)
+        const profile = await Profile.findOne({account_name : req.query.profile}).exec();
+        
+        const res = await roomsModel.find({}).lean().exec();
+        console.log(res)
+        let user_reservations = [];
+        res.forEach(s => { 
+            s.seats.forEach(a => { 
+                a.forEach(b => {
+                    b.forEach(c => {
+                        if(c['id-number'] == user) {
+                            user_reservations.push(s)
+                            s.seats = c
+                        }
+                    })
+                })
+            })
+        })
+        
+        resp.render('main', {
+            layout: 'search',
+            profile: req.query.profile,
+            user: user,
+            display_name: profile.display_name,
+            account_name: profile.account_name,
+            profile_email: profile.profile_email,
+            admin_access: profile.admin_access,
+            student_access: profile.student_access,
+            profile_picture: profile.profile_picture,
+            reservations: user_reservations
+        });
+        
+    } catch (err) {
+        console.error('Error retrieving user profile:', err);
+        res.status(500).send('Error retrieving user profile:');
+    }
+});
+
+
+
+
+server.get('/profile', async function(req, resp) {
+    try {
+        const user = req.query.user;
+        const profile = await Profile.findOne({account_name : user}).exec();
+        
+        const res = await roomsModel.find({}).lean().exec();
+        console.log('asdfghjkl ');
+        console.log(res)
+        let user_reservations = [];
+        res.forEach(s => { 
+            s.seats.forEach(a => { 
+                a.forEach(b => {
+                    b.forEach(c => {
+                        if(c['id-number'] == user) {
+                            user_reservations.push(s)
+                            s.seats = c
+                        }
+                    })
+                })
+            })
+        })
+
+        resp.render('main', {
+            layout: 'profile',
+            title: 'Profile',
+            user: user,
+            display_name: profile.display_name,
+            account_name: profile.account_name,
+            profile_email: profile.profile_email,
+            admin_access: profile.admin_access,
+            student_access: profile.student_access,
+            profile_picture: profile.profile_picture,
+            reservations: user_reservations 
+        });
+
+    } catch (err) {
+        console.error('Error retrieving current reservations:', err);
+        resp.status(500).send('Error retrieving current reservations');
+    }
+});
+
 
 server.get('/reserve_seat', async function(req, resp){
     const user = req.query.user
@@ -82,7 +153,6 @@ server.get('/reserve_seat', async function(req, resp){
             admin: profile.admin_access
         });
         console.log(req.query.user);
-        // console.log(profile.admin_access)
     }).catch(err => {throw err});
 });
 

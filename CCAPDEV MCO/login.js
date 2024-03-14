@@ -9,8 +9,6 @@ const loginSchema = new mongoose.Schema({
 
 const loginModel = mongoose.model('login', loginSchema);
 
-// server.use(express.urlencoded({ extended: true }));
-
 server.post('/read-user', (req, resp) => {
     const searchQuery = { user: req.body.user, pass: req.body.pass };
   
