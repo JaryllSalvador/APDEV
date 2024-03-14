@@ -18,7 +18,7 @@ server.post('/read-user', (req, resp) => {
       console.log('Finding user');
   
       if(login != undefined && login._id != null){
-        resp.redirect(`/profile?user=${req.body.user}`) 
+        resp.redirect(`/homepage?user=${req.body.user}`) 
 
       }else{
         resp.redirect('/?error=true'); 

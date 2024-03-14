@@ -53,11 +53,11 @@ server.get('/search', async (req, res) => {
         const user = req.query.user
         console.log(user)
         const profile = await Profile.findOne({account_name : req.query.profile}).exec();
-        res.render('search', { layout: 'profile', profile: req.query.profile, user: user, display_name: profile.display_name ,account_name:profile.account_name ,profile_email:profile.profile_email, admin_access:profile.admin_access, student_access:profile.student_access,profile_picture:profile.profile_picture });
+        res.render('main', { layout: 'search', profile: req.query.profile, user: user, display_name: profile.display_name ,account_name:profile.account_name ,profile_email:profile.profile_email, admin_access:profile.admin_access, student_access:profile.student_access,profile_picture:profile.profile_picture });
 
     } catch (err) {
         console.error('Error retrieving user profile:', err);
-        res.status(500).send('Error retrieving user profile');
+        res.status(500).send('Error retrieving user profile:');
     }
 });
 
