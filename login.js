@@ -13,7 +13,6 @@ server.post('/read-user', (req, resp) => {
     const searchQuery = { user: req.body.user, pass: req.body.pass };
   
     loginModel.findOne(searchQuery).then(function(login){
-      console.log('Finding user');
   
       if(login != undefined && login._id != null){
         resp.redirect(`/homepage?user=${req.body.user}`) 

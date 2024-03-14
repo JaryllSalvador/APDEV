@@ -58,11 +58,9 @@ const roomsModel = mongoose.model('rooms', roomsSchema);
 server.get('/search', async (req, resp) => {
     try {
         const user = req.query.user
-        console.log(user)
         const profile = await Profile.findOne({account_name : req.query.profile}).exec();
         
         const res = await roomsModel.find({}).lean().exec();
-        console.log(res)
         let user_reservations = [];
         res.forEach(s => { 
             s.seats.forEach(a => { 
@@ -105,8 +103,6 @@ server.get('/profile', async function(req, resp) {
         const profile = await Profile.findOne({account_name : user}).exec();
         
         const res = await roomsModel.find({}).lean().exec();
-        console.log('asdfghjkl ');
-        console.log(res)
         let user_reservations = [];
         res.forEach(s => { 
             s.seats.forEach(a => { 
@@ -152,7 +148,6 @@ server.get('/reserve_seat', async function(req, resp){
             user: req.query.user,
             admin: profile.admin_access
         });
-        console.log(req.query.user);
     }).catch(err => {throw err});
 });
 
@@ -160,7 +155,6 @@ server.get('/editprofile', async (req, res) => {
     try {
 
         const user = req.query.user
-        console.log(user)
         const profile = await Profile.findOne({account_name: user}).exec();
         res.render('main', {
             layout: 'editprofile',
@@ -178,7 +172,7 @@ server.get('/editprofile', async (req, res) => {
         res.status(500).send('Error retrieving user profile');
     }
 })
-const port = process.env.PORT | 9090;
+const port = process.env.PORT | 3000;
 server.listen(port, function(){
     console.log('Listening at port '+port);
 });
