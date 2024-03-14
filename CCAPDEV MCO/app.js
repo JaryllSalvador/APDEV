@@ -18,7 +18,8 @@ server.use('/login', login);
 
 server.get('/', (req, res) => {
     res.render('main',{
-        layout: 'index'
+        layout: 'index',
+        error: req.query.error == null ? "" : "Username and password does not match."
       });
 })
 
@@ -40,7 +41,7 @@ server.get('/reserve_seat', (req, res) => {
       });
 })
 
-const port = process.env.PORT | 9090;
+const port = process.env.PORT | 9999;
 server.listen(port, function(){
     console.log('Listening at port '+port);
 });

@@ -115,6 +115,55 @@ div > h1 { font-weight: bolder; }
     filter: invert(100%);
 }
 
+.navbar-nav > input {
+    border-radius: 20px;
+    border: 1px solid #195092;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 12px;
+    padding: 10px 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.22);
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.navbar-nav > button {
+    padding: 8px 12px;
+    border: 1px solid #ffffff;
+    background-color: #0052cc;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 30px; 
+    cursor: pointer;
+    margin-right: 150px;
+}
+
+.navbar-nav > button:hover {
+    border: 1px solid #1a4c96;
+    background-color: #ffffff;
+    color: #0052cc;
+}
+
+button:active,
+.navbar-nav > search button:active {
+    transform: scale(0.95);
+}
+
+button:focus,
+.navbar-nav > search button:focus {
+    outline: none;
+}
+
+.button-item,
+.button-item > button {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
 .items { padding-right: 2%; }
 
 .shadow {
