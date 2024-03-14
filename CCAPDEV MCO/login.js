@@ -13,7 +13,6 @@ const loginModel = mongoose.model('login', loginSchema);
 
 server.post('/read-user', (req, resp) => {
     const searchQuery = { user: req.body.user, pass: req.body.pass };
-    console.log(req)
   
     loginModel.findOne(searchQuery).then(function(login){
       console.log('Finding user');
