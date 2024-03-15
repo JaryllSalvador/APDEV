@@ -3,7 +3,6 @@ INSTRUCTIONS ON HOW TO SETUP AND RUN NODE.JS SERVER
 1. If Node.js and npm are not yet downloaded, download it through this link: ```https://docs.npmjs.com/downloading-and-installing-node-js-and-npm```
 
 2. Check the version to see if it is already in the system by going to the command line and typing the following:
-
    ```node -v```
    ```npm -v```
 
