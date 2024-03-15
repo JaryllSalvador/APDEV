@@ -39,7 +39,30 @@
 
     <!-- Current Reservation Section -->
     <div class="reservation">
-        <h2>Current Reservation</h2>
+
+    {{#if admin_access}}
+        {{#each admin_reservations as |a_res|}}
+            <div class="reservation-item">
+                <div class="name-container">
+                    <h2>{{a_res.seats.occupant}}</h2>
+                    <button class="edit-button" onclick="">Edit Reservation</button> 
+                </div>
+                <p>Room ID: {{a_res.room-id}}</p>
+                <p>Time Slot: {{a_res.time-format}}</p>
+                <table>
+                    <tbody>
+                            <tr>
+                                <td>Seat Number: {{a_res.seats.seat-order}}</td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        {{/each}}
+    {{else}}
+        <div class="name-container">
+            <h2>Current Reservation</h2>
+            <button class="edit-button" onclick="">Edit Reservation</button> 
+        </div>
         {{#each reservations as |res|}}
             <div class="reservation-item">
                 <p>Room ID: {{res.room-id}}</p>
@@ -53,9 +76,7 @@
                 </table>
             </div>
         {{/each}}
+    {{/if}}
     </div>
-
-
-</div>
 </body>
 </html>

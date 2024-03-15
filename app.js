@@ -101,9 +101,16 @@ server.get('/profile', async function(req, resp) {
     try {
         const user = req.query.user;
         const profile = await Profile.findOne({account_name : user}).exec();
-        
+
+
         const res = await roomsModel.find({}).lean().exec();
         let user_reservations = [];
+
+                
+        admin_res = res;
+        let admin_reservations = [];
+
+
         res.forEach(s => { 
             s.seats.forEach(a => { 
                 a.forEach(b => {
@@ -112,10 +119,15 @@ server.get('/profile', async function(req, resp) {
                             user_reservations.push(s)
                             s.seats = c
                         }
+                        if(c['is-occupied'] == true) {
+                            admin_reservations.push(c)
+                        }
                     })
                 })
             })
         })
+
+        console.log(admin_reservations);
 
         resp.render('main', {
             layout: 'profile',
@@ -127,7 +139,8 @@ server.get('/profile', async function(req, resp) {
             admin_access: profile.admin_access,
             student_access: profile.student_access,
             profile_picture: profile.profile_picture,
-            reservations: user_reservations 
+            reservations: user_reservations, 
+            admin_reservations: admin_reservations
         });
 
     } catch (err) {

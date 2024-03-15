@@ -14,5 +14,5 @@
     "express-handlebars": "^7.1.2",
     "mongoose": "^8.2.1"
   },
-  "description": ""
+  "description": "INSTRUCTIONS ON HOW TO SETUP AND RUN NODE.JS SERVER"
 }

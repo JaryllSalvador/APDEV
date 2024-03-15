@@ -245,4 +245,4 @@ button.over-btn {
     transition: filter 1.5s ease; 
 }
 
-.button-item, .button-item > button { font-family: 'Montserrat', sans-serif; }
+.button-item, .button-item > button { font-family: 'Montserrat', sans-serif; margin-bottom: 10px;}
