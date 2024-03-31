@@ -32,20 +32,11 @@ const validateUserInput = [
     }
 ];
 
-profileSchema.pre('save', function(next) {
-    const user = this;
-    
-    if (!user.isModified('password')) return next();
-    bcrypt.hash(user.password, 10, (err, hash) => {
-        if (err) return next(err);
-        user.password = hash;
-        next();
-    });
-});
-
 server.post('/create-user', validateUserInput, async (req, res) => {
     try {    
         const { firstname, lastname, account_name, profile_email, password } = req.body;
+        
+        const hashed_password = await bcrypt.hash(password, 10);
         
         const newUser = new Profile({
             firstname: firstname,
@@ -60,7 +51,7 @@ server.post('/create-user', validateUserInput, async (req, res) => {
         
         const newLogin = new login({
             user: account_name,
-            pass: password
+            pass: hashed_password
         });
         await newLogin.save();
         
