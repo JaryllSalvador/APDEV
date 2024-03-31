@@ -12,7 +12,6 @@ const profileSchema = new mongoose.Schema({
     student_access: Boolean,
     admin_access: Boolean,
     profile_email: { type: String, required: true }, 
-    password: { type: String, required: true },
     profile_picture: { type: String, default: '' }
 },{ versionKey: false });
 
@@ -73,4 +72,4 @@ server.post('/create-user', validateUserInput, async (req, res) => {
     }
 });
 
-module.exports = server
+module.exports = { Profile, server }

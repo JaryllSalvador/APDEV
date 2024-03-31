@@ -17,8 +17,8 @@ server.use(express.static('public'));
 const login = require('./login.js')
 server.use('/login', login);
 
-const Profile = require('./profile.js'); 
-server.use('/profile', Profile);
+const { Profile, server: profileRouter } = require('./profile.js');
+server.use('/profile', profileRouter);
 
 server.get('/', (req, res) => {
     res.render('main',{
