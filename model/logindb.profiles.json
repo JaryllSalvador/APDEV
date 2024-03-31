@@ -1,106 +1,108 @@
 [{
   "_id": {
-    "$oid": "65f260b9af510c9372d7cebc"
+    "$oid": "65f260b9af510c9372d7cede"
   },
-  "display_name": "Mina Sharon Myoui",
+  "firstname": "Mina Sharon",
+  "lastname" : "Myoui",
   "account_name": "12241253",
   "student_access": false,
   "admin_access": true,
   "profile_email": "mina_myoi@dlsu.edu.ph",
-  "profile_picture": "images/Mina_Pic.jpg",
-  "password": "password"
+  "profile_picture": "images/Mina_Pic.jpg"
 },
 {
   "_id": {
-    "$oid": "65f260b9af510c9372d7cebd"
+    "$oid": "65f260b9af510c9372d7cedf"
   },
-  "display_name": "Nayeon Im",
+  "firstname": "Nayeon",
+  "lastname" : "Im",
   "account_name": "12345678",
   "profile_email": "nayeon_im@dlsu.edu.ph",
   "student_access": true,
   "admin_access": true,
-  "profile_picture": "images/Nayeon_Pic.jpg",
-  "password": "password"
+  "profile_picture": "images/Nayeon_Pic.jpg"
 },
 {
   "_id": {
-    "$oid": "65f260b9af510c9372d7cebe"
+    "$oid": "65f260b9af510c9372d7cee0"
   },
-  "display_name": "Jeongyeon Yoo",
+  "firstname": "Jeongyeon",
+  "lastname" : "Yoo",
   "account_name": "23456789",
   "profile_email": "jeongyeon_yoo@dlsu.edu.ph",
   "student_access": true,
   "admin_access": false,
-  "profile_picture": "images/Jeongyeon_Pic.jpg",
-  "password": "password"
+  "profile_picture": "images/Jeongyeon_Pic.jpg"
 },
 {
   "_id": {
-    "$oid": "65f260b9af510c9372d7cebf"
+    "$oid": "65f260b9af510c9372d7cee1"
   },
-  "display_name": "Momo Hirai",
+  "firstname": "Momo",
+  "lastname" : "Hirai",
   "account_name": "34567890",
   "profile_email": "momo_hirai@dlsu.edu.ph",
   "student_access": true,
   "admin_access": false,
-  "profile_picture": "images/Momo_Pic.jpg",
-  "password": "password"
+  "profile_picture": "images/Momo_Pic.jpg"
 },
 {
   "_id": {
-    "$oid": "65f260b9af510c9372d7cec0"
+    "$oid": "65f260b9af510c9372d7cee2"
   },
-  "display_name": "Sana Minatozaki",
+  "firstname": "Sana",
+  "lastname" : "Minatokazi",
   "account_name": "45678901",
   "profile_email": "sana_minatozaki@dlsu.edu.ph",
   "student_access": true,
   "admin_access": false,
-  "profile_picture": "images/Sana_Pic.jpg",
-  "password": "password"
+  "profile_picture": "images/Sana_Pic.jpg"
 },
 {
   "_id": {
-    "$oid": "65f260b9af510c9372d7cec1"
+    "$oid": "65f260b9af510c9372d7cee3"
   },
-  "display_name": "Jihyo Park",
+  "firstname": "Jihyo",
+  "lastname" : "Park",
   "account_name": "56789012",
   "profile_email": "jihyo_park@dlsu.edu.ph",
   "student_access": true,
   "admin_access": true,
-  "profile_picture": "images/Jihyo_Pic.jpg",
-  "password": "password"
+  "profile_picture": "images/Jihyo_Pic.jpg"
 },
 {
   "_id": {
-    "$oid": "65f260b9af510c9372d7cec3"
+    "$oid": "65f260b9af510c9372d7cee4"
   },
-  "display_name": "Dahyun Kim",
+  "firstname": "Dahyun",
+  "lastname" : "Kim",
   "account_name": "78901234",
   "profile_email": "dahyun_kim@dlsu.edu.ph",
   "student_access": true,
   "admin_access": false,
-  "profile_picture": "images/Dahyun_Pic.jpg",
-  "password": "password"
+  "profile_picture": "images/Dahyun_Pic.jpg"
 },
 {
   "_id": {
-    "$oid": "65f260b9af510c9372d7cec4"
+    "$oid": "65f260b9af510c9372d7cee5"
   },
-  "display_name": "Chaeyoung Son",
+  "firstname": "Chaeyong",
+  "lastname" : "Son",
   "account_name": "89012345",
   "profile_email": "chaeyoung_son@dlsu.edu.ph",
   "student_access": true,
   "admin_access": false,
-  "profile_picture": "images/Chaeyoung_Pic.jpg",
-  "password": "password"
+  "profile_picture": "images/Chaeyoung_Pic.jpg"
 },
 {
-  "_id": "65f260b9af510c9372d7c22",
-  "display_name": "Chou Tzuyu",
+  "_id": {
+    "$oid": "65f260b9af510c9372d7cee6"
+  },
+  "firstname": "Tzuyu",
+  "lastname" : "Chou",
   "account_name": "16892732",
   "profile_email": "chou_tzuyu@dlsu.edu.ph",
   "student_access": true,
   "admin_access": false,
-  "profile_picture": "images/Tzuyu_Pic.jpg",
-  "password": "password"
+  "profile_picture": "images/Tzuyu_Pic.jpg"
 }]

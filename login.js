@@ -1,13 +1,7 @@
 const mongoose = require('./server.js');
 const express = require('express');
 const server = express.Router();
-
-const loginSchema = new mongoose.Schema({
-    user: { type: String },
-    pass: { type: String }
-},{ versionKey: false });
-
-const loginModel = mongoose.model('login', loginSchema);
+const loginModel = require('./models.js')
 
 server.post('/read-user', (req, resp) => {
     const searchQuery = { user: req.body.user, pass: req.body.pass };
