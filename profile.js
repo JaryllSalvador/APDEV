@@ -18,11 +18,37 @@ const profileSchema = new mongoose.Schema({
 const Profile = mongoose.model('profiles', profileSchema);
 
 const validateUserInput = [
-    body('firstname').trim().notEmpty().withMessage('First name is required').matches(/^[a-zA-Z]+$/).withMessage('Invalid name format'),
-    body('lastname').trim().notEmpty().withMessage('Last name is required').matches(/^[a-zA-Z]+$/).withMessage('Invalid name format'),
-    body('account_name').trim().notEmpty().withMessage('Username is required').isLength({ min: 8, max: 8 }).withMessage('Username must have 8 characters').isNumeric().withMessage('Username must contain only numbers'),
-    body('profile_email').isEmail().withMessage('Invalid email address'),
-    body('password').isLength({ min: 8, max: 16 }).withMessage('Password must be between 8 and 16 characters long'),
+    body('firstname')
+        .trim()
+        .notEmpty()
+        .withMessage('First name is required')
+        .matches(/^[A-Z]/)
+        .withMessage('First name must start with a capital letter'),
+
+    body('lastname')
+        .trim()
+        .notEmpty()
+        .withMessage('Last name is required')
+        .matches(/^[A-Z]/)
+        .withMessage('Last name must start with a capital letter'),
+
+    body('account_name')
+        .trim()
+        .notEmpty()
+        .withMessage('Username is required')
+        .isLength({ min: 8, max: 8 })
+        .withMessage('Username must have 8 characters')
+        .isNumeric()
+        .withMessage('Username must contain only numbers'),
+
+    body('profile_email')
+        .isEmail()
+        .withMessage('Invalid email address'),
+
+    body('password')
+        .isLength({ min: 8, max: 20 })
+        .withMessage('Password must be between 8 and 20 characters long'),
+
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

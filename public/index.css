@@ -11,7 +11,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: -20px 0 50px;
-    background-image: url('images/background.jpg'); /* Add your image URL */
+    background-image: url('images/background.jpg');
     background-size: cover;
     background-position: center; 
     background-attachment: fixed;
@@ -64,18 +64,41 @@ a {
     backdrop-filter: blur(10px); 
 }
 
+.form-container .input-control {
+    flex-direction: column;
+    text-align: left;
+}
+
 .form-container input {
-    background-color: #ecf0f3;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 15px;
-    margin: 8px 0;
+    background-color: #ffffff;
+    border: none; /* from .input-control input */
+    border-radius: 6px; /* increased to match your original style */
+    padding: 12px 15px; /* retained from your style for consistent sizing */
+    margin: 5px 0;
     width: 100%;
     letter-spacing: 0.15px;
     outline: none;
     transition: 0.25s ease;
-    box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
-    
+    box-shadow: inset 0px 0px 10px 0px #d1d9e6, inset 0px -1px 4px 3px #f9f9f9;
+    font-size: 12px; /* from .input-control input */
+    display: block; /* from .input-control input */
+}
+
+.form-container input:focus {
+    outline: 0; /* from .input-control input:focus */
+}
+
+.form-container .input-control.success input {
+    border-color: #09c372; /* from .input-control.success input */
+}
+
+.form-container .input-control.error input {
+    border-color: #ff3860; /* from .input-control.error input */
+}
+
+.form-container .input-control .error {
+    color: #ff3860; /* from .input-control .error */
+    font-size: 9px;
 }
 
 .form-container button, button {
@@ -103,7 +126,6 @@ button:focus {
 button.over-btn {
     background: transparent;
     border-color: #fff;
-    
 }
 
 .form-container {
@@ -130,6 +152,7 @@ button.over-btn {
 .signup-container button {
     border: 1px solid #195092;
     background-color: #0052cc;
+    margin-top: 10px;
 }
 
 .login-container button {

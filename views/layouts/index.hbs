@@ -15,21 +15,51 @@
             <img src="images/logo.png" alt="" class="logo">comluv.
         </div>
         <div class="form-container signup-container">
-			<form action="profile/create-user" method="post">
+			<form action="profile/create-user" method="post" name="sign-up-form">
 				<h1>Create Account</h1>
-				<input type="text" placeholder="First Name" name="firstname"/>
-				<input type="text" placeholder="Last Name" name="lastname"/>
-				<input type="text" placeholder="Username" name="account_name"/>
-				<input type="email" placeholder="Email" name="profile_email"/>
-				<input type="password" placeholder="Password" name="password"/>
+				
+				<div class="input-control">
+					<input type="text" placeholder="First Name" name="firstname"/>
+					<div class="error"></div>
+				</div>
+				
+				<div class="input-control">
+					<input type="text" placeholder="Last Name" name="lastname"/>
+					<div class="error"></div>
+				</div>
+				
+				<div class="input-control">
+					<input type="text" placeholder="Username" name="account_name"/>
+					<div class="error"></div>
+				</div>
+				
+				<div class="input-control">
+					<input type="email" placeholder="Email" name="profile_email"/>
+					<div class="error"></div>
+				</div>
+				
+				<div class="input-control">
+					<input type="password" placeholder="Password" name="password"/>
+					<div class="error"></div>
+				</div>
+				
 				<button class="button-item" type="submit">Sign Up</button>
 			</form>
 		</div> 
 		<div class="form-container login-container">
-			<form action="login/read-user" method="post">
+			<form action="login/read-user" method="post" name="login-form">
 				<h1>Log In</h1>
-				<input type="text" placeholder="Username" name="user" />
-				<input type="password" placeholder="Password" name="pass" />
+				
+				<div class="input-control">
+					<input type="text" placeholder="Username" name="user" />
+					<div class="error"></div>
+				</div>
+				
+				<div class="input-control">
+					<input type="password" placeholder="Password" name="pass" />
+					
+				</div>
+				
 				<a href="#" class="error">{{error}}</a> 
 				<a href="#" class="forgot">Forgot your password?</a> 
 				<button class="button-item" type="submit">Log In</button>
