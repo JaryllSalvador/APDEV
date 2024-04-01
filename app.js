@@ -23,7 +23,8 @@ server.use('/profile', profileRouter);
 server.get('/', (req, res) => {
     res.render('main',{
         layout: 'index',
-        error: req.query.error ? "Invalid username or password." : ""
+        error: req.query.error ? "Invalid username or password." : "",
+        signUpError: req.query.signUpError ? "Username already exists." : ""
     });
 })
 server.get('/homepage', (req, res) => {

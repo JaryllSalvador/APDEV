@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const signUpForm = document.forms['sign-up-form'];
 
     signUpForm.addEventListener('submit', e => {
-        e.preventDefault();
-        validateSignUpInputs();
+        validateSignUpInputs(e);
     });
 });
 
@@ -53,40 +52,60 @@ const startsWithCapital = name => /^[A-Z]/.test(name);
 
 const isNumericAndEightChars = username => /^\d{8}$/.test(username);
 
-const validateSignUpInputs = () => {
+const validateSignUpInputs = (e) => {
     const firstName = signUpForm['firstname'];
     const lastName = signUpForm['lastname'];
     const username = signUpForm['account_name'];
     const email = signUpForm['profile_email'];
     const password = signUpForm['password'];
 
-    if (!startsWithCapital(firstName.value)) {
+    if (!firstName.value.trim()) {
+        setError(firstName, 'First name is required');
+        e.preventDefault();
+    } else if (!startsWithCapital(firstName.value)) {
         setError(firstName, 'First name must start with a capital letter');
+        e.preventDefault();
     } else {
         setSuccess(firstName);
     }
     
-    if (!startsWithCapital(lastName.value)) {
+    if (!lastName.value.trim()) {
+        setError(lastName, 'Last name is required');
+        e.preventDefault();
+    } else if (!startsWithCapital(lastName.value)) {
         setError(lastName, 'Last name must start with a capital letter');
+        e.preventDefault();
     } else {
         setSuccess(lastName);
     }
 
-    if (!isNumericAndEightChars(username.value)) {
+    if (!username.value.trim()) {
+        setError(username, 'Username is required');
+        e.preventDefault();
+    } else if (!isNumericAndEightChars(username.value)) {
         setError(username, 'Username must be 8 numeric characters');
+        e.preventDefault();
     } else {
-        // check if unique!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // check if unique!!!!
         setSuccess(username);
     }
 
-    if (!isValidEmail(email.value)) {
+    if (!email.value.trim()) {
+        setError(email, 'Email address is required');
+        e.preventDefault();
+    } else if (!isValidEmail(email.value)) {
         setError(email, 'Provide a valid email address');
+        e.preventDefault();
     } else {
         setSuccess(email);
     }
 
-    if (password.value.length < 8 || password.value.length > 20) {
+    if (!password.value.trim()) {
+        setError(password, 'Password is required');
+        e.preventDefault();
+    } else if (password.value.length < 8 || password.value.length > 20) {
         setError(password, 'Password must be 8-20 characters long');
+        e.preventDefault();
     } else {
         setSuccess(password);
     }
@@ -96,8 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.forms['login-form'];
 
     loginForm.addEventListener('submit', e => {
-        e.preventDefault(); 
-        validateLoginInputs();
+        validateLoginInputs(e);
     });
 });
 
@@ -117,18 +135,20 @@ const setSuccessForLogin = element => {
     inputControl.classList.remove('error');
 };
 
-const validateLoginInputs = () => {
+const validateLoginInputs = (e) => {
     const username = loginForm['user'];
     const password = loginForm['pass'];
 
     if (username.value.trim() === '') {
         setErrorForLogin(username, 'Username is required');
+        e.preventDefault();
     } else {
         setSuccessForLogin(username);
     }
 
     if (password.value.trim() === '') {
         setErrorForLogin(password, 'Password is required');
+        e.preventDefault();
     } else {
         setSuccessForLogin(password);
     }

@@ -71,33 +71,33 @@ a {
 
 .form-container input {
     background-color: #ffffff;
-    border: none; /* from .input-control input */
-    border-radius: 6px; /* increased to match your original style */
-    padding: 12px 15px; /* retained from your style for consistent sizing */
+    border-color: white;
+    border-radius: 6px;
+    padding: 12px 15px;
     margin: 5px 0;
     width: 100%;
     letter-spacing: 0.15px;
     outline: none;
     transition: 0.25s ease;
-    box-shadow: inset 0px 0px 10px 0px #d1d9e6, inset 0px -1px 4px 3px #f9f9f9;
-    font-size: 12px; /* from .input-control input */
-    display: block; /* from .input-control input */
+    box-shadow: 2px 2px 1px 0px #d1d9e6, inset 0px 0px 4px 3px #f9f9f9;
+    font-size: 12px;
+    display: block;
 }
 
 .form-container input:focus {
-    outline: 0; /* from .input-control input:focus */
+    outline: 0; 
 }
 
 .form-container .input-control.success input {
-    border-color: #09c372; /* from .input-control.success input */
+    border-color: #09c372; 
 }
 
 .form-container .input-control.error input {
-    border-color: #ff3860; /* from .input-control.error input */
+    border-color: #ff3860; 
 }
 
 .form-container .input-control .error {
-    color: #ff3860; /* from .input-control .error */
+    color: #ff3860;
     font-size: 9px;
 }
 
@@ -165,11 +165,11 @@ button.over-btn {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .login-container .error {
     font-size: 12px;
-    display: flex;
     flex-direction: column;
     margin-bottom: 10px;
     color: red;

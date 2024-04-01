@@ -1,12 +1,28 @@
 const mongoose = require('./server.js');
 const express = require('express');
-const bcrypt = require('bcrypt'); // Ensure bcrypt is required
+const bcrypt = require('bcrypt'); 
 const server = express.Router();
 const loginModel = require('./models.js');
 
-server.post('/read-user', (req, resp) => {
-    const searchQuery = { user: req.body.user };
 
+server.post('/read-user', (req, resp) => {
+    console.log("hello")
+    
+    let errors = ''
+    const searchQuery = { user: req.body.user };
+    
+    // if(req.body.user == null){
+    //     errors += 'u'
+    // }
+    
+    // if(req.body.pass == null){
+    //     errors += 'p'
+    // }
+    
+    // if(errors != null){
+    //     return resp.redirect(`/?error=${errors}`); 
+    // }
+    
     loginModel.findOne(searchQuery).then(function(login){
         if(login != undefined && login._id != null){
             bcrypt.compare(req.body.pass, login.pass, function(err, isMatch) {
