@@ -27,6 +27,7 @@ server.get('/', (req, res) => {
         signUpError: req.query.signUpError ? "Username already exists." : ""
     });
 })
+
 server.get('/homepage', (req, res) => {
     res.render('main',{
         user : req.query.user,
@@ -168,7 +169,7 @@ server.get('/reserve_seat', async function(req, resp){
             layout: 'reserve_seat',
             title: 'Reserve Seat',
             room_info: data,
-            user: req.query.user,
+            user: user,
             admin: profile.admin_access
         });
     }).catch(err => {throw err});

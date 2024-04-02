@@ -18,7 +18,7 @@
 <body>
     {{> header this}}
 
-    <div class="body-container">
+    <div class="body-container" account-id="{{user}}" is-admin="{{admin}}">
         {{#each room_info}}
             <div class="body-container">
                 <div id="{{room-id}}-{{time-slot}}" class="reserve-screen bounded-box room-slot">
@@ -27,7 +27,7 @@
                             {{#each this}}
                                 <div class="table" id="table-{{@index}}">
                                     {{#each this}}
-                                        <div class="seat" id="{{seat-id}}" data-order="{{seat-order}}" data-name="{{occupant}}" user-id="{{id-number}}" account-id="{{user}}" is-admin="{{admin}}" is-anon="{{is-anon}}">
+                                        <div class="seat" id="{{seat-id}}" data-order="{{seat-order}}" data-name="{{occupant}}" user-id="{{id-number}}" is-anon="{{is-anon}}">
                                             {{!-- Seat ID: {{seat-id}}, zOrder: {{seat-order}}, Occupant: {{occupant}} --}}
                                         </div>
                                     {{/each}}
@@ -108,10 +108,10 @@
             </div>
             <p id="seat-number">No seat selected.</p>
             <button id="reserve" class="button">Reserve</button>
-            {{#if admin}}
-                <button id="editBtn" class="button">Edit Reservation</button>
-                <button id="deleteBtn" class="button">Delete Reservation</button>
-            {{/if}}
+            <button id="reserveAnon" class="button">Reserve Anonymous</button>
+            <button id="reserveWI" class="button">Reserve Walk-in</button>
+            <button id="editBtn" class="button">Edit Reservation</button>
+            <button id="deleteBtn" class="button">Delete Reservation</button>
         </div>
     </div>
 
