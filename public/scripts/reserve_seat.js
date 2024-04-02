@@ -44,7 +44,14 @@ function seatClicked(e) {
     let reserveWI = document.getElementById('reserveWI');
 
     if (availableSeats[id].get("is_occupied") === true) {
-        seatNumber.textContent = "This seat is occupied by: " + availableSeats[id].get("name");
+
+        if(availableSeats[id].get("is_anon") === "true")
+        {
+            if(is_admin === "true" || availableSeats[id].get("user_id") === account_id)
+                seatNumber.textContent = "This seat is occupied by: " + availableSeats[id].get("name");
+            else seatNumber.textContent = "This seat is occupied by an anonymous user"
+        } else seatNumber.textContent = "This seat is occupied by: " + availableSeats[id].get("name");
+        
         if (selectedSeat !== null) {
             selectedSeat.style.backgroundColor = availableSeats[selectedSeat.id].get("is_occupied") !== false ? '#5b6062' : '#e8eae9';
         }
