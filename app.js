@@ -61,7 +61,7 @@ server.get('/profile', async (req, res) => {
 const roomsSchema = new mongoose.Schema({
     "room-id": { type: String },
     "time-slot": { type: String },
-    seats: [[[{ "seat-id": {type: Number}, "seat-order": {type: Number}, "is-occupied": {type: Boolean}, "occupant": {type: String}, "id-number": {type: Number} }]]]
+    seats: [[[{ "seat-id": {type: Number}, "seat-order": {type: Number}, "is-occupied": {type: Boolean}, "occupant": {type: String}, "is-anon": {type: Boolean}, "id-number": {type: Number} }]]]
   },{ versionKey: false });
   
 const roomsModel = mongoose.model('rooms', roomsSchema);

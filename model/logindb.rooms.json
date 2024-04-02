@@ -13,6 +13,7 @@
           "seat-order": 0,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -20,6 +21,7 @@
           "seat-order": 1,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -27,6 +29,7 @@
           "seat-order": 2,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -36,6 +39,7 @@
           "seat-order": 3,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -43,6 +47,7 @@
           "seat-order": 4,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -50,6 +55,7 @@
           "seat-order": 5,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -59,6 +65,7 @@
           "seat-order": 6,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -66,6 +73,7 @@
           "seat-order": 7,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -73,6 +81,7 @@
           "seat-order": 8,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -84,6 +93,7 @@
           "seat-order": 9,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -91,6 +101,7 @@
           "seat-order": 10,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -98,6 +109,7 @@
           "seat-order": 11,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -107,6 +119,7 @@
           "seat-order": 12,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -114,6 +127,7 @@
           "seat-order": 13,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -121,6 +135,7 @@
           "seat-order": 14,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -130,6 +145,7 @@
           "seat-order": 15,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -137,6 +153,7 @@
           "seat-order": 16,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -144,6 +161,7 @@
           "seat-order": 17,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -155,6 +173,7 @@
           "seat-order": 18,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -162,6 +181,7 @@
           "seat-order": 19,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -169,6 +189,7 @@
           "seat-order": 20,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -178,6 +199,7 @@
           "seat-order": 21,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -185,6 +207,7 @@
           "seat-order": 22,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -192,6 +215,7 @@
           "seat-order": 23,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -201,6 +225,7 @@
           "seat-order": 24,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -208,6 +233,7 @@
           "seat-order": 25,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -215,6 +241,7 @@
           "seat-order": 26,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -226,6 +253,7 @@
           "seat-order": 27,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -233,6 +261,7 @@
           "seat-order": 28,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -240,6 +269,7 @@
           "seat-order": 29,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -249,6 +279,7 @@
           "seat-order": 30,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -256,6 +287,7 @@
           "seat-order": 31,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -263,6 +295,7 @@
           "seat-order": 32,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -272,6 +305,7 @@
           "seat-order": 33,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -279,6 +313,7 @@
           "seat-order": 34,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -286,6 +321,7 @@
           "seat-order": 35,
           "is-occupied": true,
           "occupant": "Jeongyeon Yoo",
+          "is-anon": false,
           "id-number": 23456789
         }
       ]
@@ -297,6 +333,7 @@
           "seat-order": 36,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -304,6 +341,7 @@
           "seat-order": 37,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -311,6 +349,7 @@
           "seat-order": 38,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -320,6 +359,7 @@
           "seat-order": 39,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -327,6 +367,7 @@
           "seat-order": 40,
           "is-occupied": true,
           "occupant": "Mina Sharon Myoi",
+          "is-anon": false,
           "id-number": 12241253
         },
         {
@@ -334,6 +375,7 @@
           "seat-order": 41,
           "is-occupied": true,
           "occupant": "Nayeon Im",
+          "is-anon": false,
           "id-number": 12345678
         }
       ],
@@ -343,6 +385,7 @@
           "seat-order": 42,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -350,6 +393,7 @@
           "seat-order": 43,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -357,6 +401,7 @@
           "seat-order": 44,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -378,6 +423,7 @@
           "seat-order": 0,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -385,6 +431,7 @@
           "seat-order": 1,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -392,6 +439,7 @@
           "seat-order": 2,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -401,6 +449,7 @@
           "seat-order": 3,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -408,6 +457,7 @@
           "seat-order": 4,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -415,6 +465,7 @@
           "seat-order": 5,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -424,6 +475,7 @@
           "seat-order": 6,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -431,6 +483,7 @@
           "seat-order": 7,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -438,6 +491,7 @@
           "seat-order": 8,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -449,6 +503,7 @@
           "seat-order": 9,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -456,6 +511,7 @@
           "seat-order": 10,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -463,6 +519,7 @@
           "seat-order": 11,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -472,6 +529,7 @@
           "seat-order": 12,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -479,6 +537,7 @@
           "seat-order": 13,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -486,6 +545,7 @@
           "seat-order": 14,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -495,6 +555,7 @@
           "seat-order": 15,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -502,6 +563,7 @@
           "seat-order": 16,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -509,6 +571,7 @@
           "seat-order": 17,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -520,6 +583,7 @@
           "seat-order": 18,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -527,6 +591,7 @@
           "seat-order": 19,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -534,6 +599,7 @@
           "seat-order": 20,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -543,6 +609,7 @@
           "seat-order": 21,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -550,6 +617,7 @@
           "seat-order": 22,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -557,6 +625,7 @@
           "seat-order": 23,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -566,6 +635,7 @@
           "seat-order": 24,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -573,6 +643,7 @@
           "seat-order": 25,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -580,6 +651,7 @@
           "seat-order": 26,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -591,6 +663,7 @@
           "seat-order": 27,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -598,6 +671,7 @@
           "seat-order": 28,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -605,6 +679,7 @@
           "seat-order": 29,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -614,6 +689,7 @@
           "seat-order": 30,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -621,6 +697,7 @@
           "seat-order": 31,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -628,6 +705,7 @@
           "seat-order": 32,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -637,6 +715,7 @@
           "seat-order": 33,
           "is-occupied": true,
           "occupant": "Jihyo Park",
+          "is-anon": false,
           "id-number": 56789012
         },
         {
@@ -644,6 +723,7 @@
           "seat-order": 34,
           "is-occupied": true,
           "occupant": "Momo Hirai",
+          "is-anon": false,
           "id-number": 34567890
         },
         {
@@ -651,6 +731,7 @@
           "seat-order": 35,
           "is-occupied": true,
           "occupant": "Sana Minatozaki",
+          "is-anon": false,
           "id-number": 45678901
         }
       ]
@@ -662,6 +743,7 @@
           "seat-order": 36,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -669,6 +751,7 @@
           "seat-order": 37,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -676,6 +759,7 @@
           "seat-order": 38,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -685,6 +769,7 @@
           "seat-order": 39,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -692,6 +777,7 @@
           "seat-order": 40,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -699,6 +785,7 @@
           "seat-order": 41,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -708,6 +795,7 @@
           "seat-order": 42,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -715,6 +803,7 @@
           "seat-order": 43,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -722,6 +811,7 @@
           "seat-order": 44,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -743,6 +833,7 @@
           "seat-order": 0,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -750,6 +841,7 @@
           "seat-order": 1,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -757,6 +849,7 @@
           "seat-order": 2,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -766,6 +859,7 @@
           "seat-order": 3,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -773,6 +867,7 @@
           "seat-order": 4,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -780,6 +875,7 @@
           "seat-order": 5,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -789,6 +885,7 @@
           "seat-order": 6,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -796,6 +893,7 @@
           "seat-order": 7,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -803,6 +901,7 @@
           "seat-order": 8,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -814,6 +913,7 @@
           "seat-order": 9,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -821,6 +921,7 @@
           "seat-order": 10,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -828,6 +929,7 @@
           "seat-order": 11,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -837,6 +939,7 @@
           "seat-order": 12,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -844,6 +947,7 @@
           "seat-order": 13,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -851,6 +955,7 @@
           "seat-order": 14,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -860,6 +965,7 @@
           "seat-order": 15,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -867,6 +973,7 @@
           "seat-order": 16,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -874,6 +981,7 @@
           "seat-order": 17,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -885,6 +993,7 @@
           "seat-order": 18,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -892,6 +1001,7 @@
           "seat-order": 19,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -899,6 +1009,7 @@
           "seat-order": 20,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -908,6 +1019,7 @@
           "seat-order": 21,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -915,6 +1027,7 @@
           "seat-order": 22,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -922,6 +1035,7 @@
           "seat-order": 23,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -931,6 +1045,7 @@
           "seat-order": 24,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -938,6 +1053,7 @@
           "seat-order": 25,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -945,6 +1061,7 @@
           "seat-order": 26,
           "is-occupied": true,
           "occupant": "Dahyun Kim",
+          "is-anon": false,
           "id-number": 78901234
         }
       ]
@@ -956,6 +1073,7 @@
           "seat-order": 27,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -963,6 +1081,7 @@
           "seat-order": 28,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -970,6 +1089,7 @@
           "seat-order": 29,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -979,6 +1099,7 @@
           "seat-order": 30,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -986,6 +1107,7 @@
           "seat-order": 31,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -993,6 +1115,7 @@
           "seat-order": 32,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1002,6 +1125,7 @@
           "seat-order": 33,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1009,6 +1133,7 @@
           "seat-order": 34,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1016,6 +1141,7 @@
           "seat-order": 35,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -1027,6 +1153,7 @@
           "seat-order": 36,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1034,6 +1161,7 @@
           "seat-order": 37,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1041,6 +1169,7 @@
           "seat-order": 38,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1050,6 +1179,7 @@
           "seat-order": 39,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1057,6 +1187,7 @@
           "seat-order": 40,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1064,6 +1195,7 @@
           "seat-order": 41,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1073,6 +1205,7 @@
           "seat-order": 42,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1080,6 +1213,7 @@
           "seat-order": 43,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1087,6 +1221,7 @@
           "seat-order": 44,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -1108,6 +1243,7 @@
           "seat-order": 0,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1115,6 +1251,7 @@
           "seat-order": 1,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1122,6 +1259,7 @@
           "seat-order": 2,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1131,6 +1269,7 @@
           "seat-order": 3,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1138,6 +1277,7 @@
           "seat-order": 4,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1145,6 +1285,7 @@
           "seat-order": 5,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1154,6 +1295,7 @@
           "seat-order": 6,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1161,6 +1303,7 @@
           "seat-order": 7,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1168,6 +1311,7 @@
           "seat-order": 8,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -1179,6 +1323,7 @@
           "seat-order": 9,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1186,6 +1331,7 @@
           "seat-order": 10,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1193,6 +1339,7 @@
           "seat-order": 11,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1202,6 +1349,7 @@
           "seat-order": 12,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1209,6 +1357,7 @@
           "seat-order": 13,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1216,6 +1365,7 @@
           "seat-order": 14,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1225,6 +1375,7 @@
           "seat-order": 15,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1232,6 +1383,7 @@
           "seat-order": 16,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1239,6 +1391,7 @@
           "seat-order": 17,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -1250,6 +1403,7 @@
           "seat-order": 18,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1257,6 +1411,7 @@
           "seat-order": 19,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1264,6 +1419,7 @@
           "seat-order": 20,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1273,6 +1429,7 @@
           "seat-order": 21,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1280,6 +1437,7 @@
           "seat-order": 22,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1287,6 +1445,7 @@
           "seat-order": 23,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1296,6 +1455,7 @@
           "seat-order": 24,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1303,6 +1463,7 @@
           "seat-order": 25,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1310,6 +1471,7 @@
           "seat-order": 26,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -1321,6 +1483,7 @@
           "seat-order": 27,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1328,6 +1491,7 @@
           "seat-order": 28,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1335,6 +1499,7 @@
           "seat-order": 29,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1344,6 +1509,7 @@
           "seat-order": 30,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1351,6 +1517,7 @@
           "seat-order": 31,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1358,6 +1525,7 @@
           "seat-order": 32,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1367,6 +1535,7 @@
           "seat-order": 33,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1374,6 +1543,7 @@
           "seat-order": 34,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1381,6 +1551,7 @@
           "seat-order": 35,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]
@@ -1392,6 +1563,7 @@
           "seat-order": 36,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1399,6 +1571,7 @@
           "seat-order": 37,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1406,6 +1579,7 @@
           "seat-order": 38,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1415,6 +1589,7 @@
           "seat-order": 39,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1422,6 +1597,7 @@
           "seat-order": 40,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         },
         {
@@ -1429,6 +1605,7 @@
           "seat-order": 41,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ],
@@ -1438,6 +1615,7 @@
           "seat-order": 42,
           "is-occupied": true,
           "occupant": "Chaeyoung Son",
+          "is-anon": false,
           "id-number": 89012345
         },
         {
@@ -1445,6 +1623,7 @@
           "seat-order": 43,
           "is-occupied": true,
           "occupant": "Chou Tzuyu",
+          "is-anon": false,
           "id-number": 16892732
         },
         {
@@ -1452,6 +1631,7 @@
           "seat-order": 44,
           "is-occupied": false,
           "occupant": "none",
+          "is-anon": false,
           "id-number": null
         }
       ]

@@ -11,6 +11,10 @@ for (let i = 0; i < availableSeats.length; i++) {
         availableSeats[i].set("seat_order", document.getElementById(i).getAttribute("data-order"));
         availableSeats[i].set("is_occupied", true);
         availableSeats[i].set("name", document.getElementById(i).getAttribute("data-name"));
+        availableSeats[i].set("user_id", document.getElementById(i).getAttribute("user-id"));
+        availableSeats[i].set("account_id", document.getElementById(i).getAttribute("account-id"));
+        availableSeats[i].set("is_admin", document.getElementById(i).getAttribute("is-admin"));
+        availableSeats[i].set("is_anon", document.getElementById(i).getAttribute("is-anon"));
     }
     else {
         availableSeats[i] = new Map();
@@ -25,6 +29,7 @@ let selectedSeat = null;
 const reserve_seat = () => {
     seats.forEach((seat, index) => {
         seat.style.backgroundColor = availableSeats[index].get("is_occupied") !== false ? '#5b6062' : '#e8eae9';
+        seat.style.backgroundColor = availableSeats[index].get("is_occupied") !== false ? '#D16002' : '';
         seat.addEventListener('click', seatClicked);
     });
 };

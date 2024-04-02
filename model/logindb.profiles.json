@@ -5,7 +5,7 @@
   "firstname": "Mina Sharon",
   "lastname" : "Myoui",
   "account_name": "12241253",
-  "student_access": false,
+  "student_access": true,
   "admin_access": true,
   "profile_email": "mina_myoi@dlsu.edu.ph",
   "profile_picture": "images/Mina_Pic.jpg"
@@ -86,7 +86,7 @@
   "_id": {
     "$oid": "65f260b9af510c9372d7cee5"
   },
-  "firstname": "Chaeyong",
+  "firstname": "Chaeyoung",
   "lastname" : "Son",
   "account_name": "89012345",
   "profile_email": "chaeyoung_son@dlsu.edu.ph",

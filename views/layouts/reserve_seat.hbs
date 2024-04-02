@@ -27,7 +27,7 @@
                             {{#each this}}
                                 <div class="table" id="table-{{@index}}">
                                     {{#each this}}
-                                        <div class="seat" id="{{seat-id}}" data-name="{{occupant}}" data-order="{{seat-order}}">
+                                        <div class="seat" id="{{seat-id}}" data-order="{{seat-order}}" data-name="{{occupant}}" user-id="{{id-number}}" account-id="{{user}}" is-admin="{{admin}}" is-anon="{{is-anon}}">
                                             {{!-- Seat ID: {{seat-id}}, zOrder: {{seat-order}}, Occupant: {{occupant}} --}}
                                         </div>
                                     {{/each}}
