@@ -3,25 +3,12 @@ const express = require('express');
 const bcrypt = require('bcrypt'); 
 const server = express.Router();
 const loginModel = require('./models.js');
+const profileModel = require('./profile.js');
 
 
 server.post('/read-user', (req, resp) => {
-    console.log("hello")
-    
     let errors = ''
     const searchQuery = { user: req.body.user };
-    
-    // if(req.body.user == null){
-    //     errors += 'u'
-    // }
-    
-    // if(req.body.pass == null){
-    //     errors += 'p'
-    // }
-    
-    // if(errors != null){
-    //     return resp.redirect(`/?error=${errors}`); 
-    // }
     
     loginModel.findOne(searchQuery).then(function(login){
         if(login != undefined && login._id != null){
@@ -42,31 +29,27 @@ server.post('/read-user', (req, resp) => {
     });
 });
 
-// server.post('/update-password', async (req, res) => {
-//   try {
-//       const { user, currentpass, newpass } = req.body;
-//       const existing_user = await loginModel.findOne({ user: user });
+server.post('/update-password', async (req, res) => {
+  try {
+        const { email, newpass } = req.body;
+        const existing_user = await profileModel.Profile.findOne({ profile_email: email });
+        const existing_login = await loginModel.findOne({ user: existing_user.account_name });
+          
+        if (!existing_user) {
+        return res.status(400).send('Email not found');
+        }
+        
+        const hashed_newpass = await bcrypt.hash(newpass, 10);
+        existing_login.pass = hashed_newpass;
+        
+        await existing_login.save();
 
-//       if (!existing_user) {
-//           return res.status(400).send('User not found');
-//       }
-
-//       const pass_match = await bcrypt.compare(currentpass, existing_user.pass);
-//       if (!pass_match) {
-//           return res.status(400).send('Current password is incorrect');
-//       }
-
-//       const hashed_newpass = await bcrypt.hash(newpass, 10);
-
-//       existing_user.pass = hashed_newpass;
-//       await existing_user.save();
-
-//       res.send('Password updated successfully');
-//   } catch (error) {
-//       console.error('Error updating password:', error);
-//       res.status(500).send('Error updating password');
-//   }
-// });
+        res.redirect('/?updatePassSuccess=true'); 
+    } catch (error) {
+        console.error('Error updating password:', error);
+        res.status(500).send('Error updating password');
+  }
+});
 
 
 module.exports = server;

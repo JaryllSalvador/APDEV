@@ -30,14 +30,13 @@ server.post('/create-user', async (req, res) => {
             profile_email: profile_email,
             student_access: true,
             admin_access: false,
-            profile_picture: ''
+            profile_picture: 'images/default_avatar.png'
         });
         
         Profile.findOne({account_name: account_name}).then(async function(login){
             if(login != undefined && login._id != null){
                 res.redirect('/?signUpError=user'); 
             }
-            
             else{
                 
                 await newUser.save();

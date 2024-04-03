@@ -78,7 +78,7 @@ const validateSignUpInputs = (e) => {
     } else {
         setSuccess(lastName);
     }
-
+    
     if (!username.value.trim()) {
         setError(username, 'Username is required');
         e.preventDefault();
@@ -153,5 +153,33 @@ const validateLoginInputs = (e) => {
         setSuccessForLogin(password);
     }
 };
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const forgotPasswordLink = document.querySelector('.forgot');
+    const forgotPasswordPopup = document.getElementById('forgotPasswordPopup');
+    const closeButton = document.querySelector('.close-button');
+
+    forgotPasswordLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        forgotPasswordPopup.style.display = 'flex';
+    });
+
+    closeButton.addEventListener('click', function() {
+        forgotPasswordPopup.style.display = 'none';
+    });
+
+    document.getElementById('resetPasswordForm').addEventListener('submit', async function(e) {
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+    });
+    
+    const _forgotPasswordPopup = document.getElementById('updatePassContainer');
+    const _closeButton = document.querySelector('.x-button');
+
+    _closeButton.addEventListener('click', function() {
+        _forgotPasswordPopup.style.display = 'none';
+    });
+});
 
 

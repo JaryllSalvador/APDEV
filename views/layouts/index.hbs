@@ -77,10 +77,30 @@
 					<h1>Hello!</h1>
 					<p>Enter your personal details and start reserving in our lab now.</p>
 					<button class="over-btn button-item" id="signup">Sign Up</button>
+					<a class="button-item" href="homepage"><button class="over-btn button-item" href="homepage" id="guest">Continue as Guest</button></a> 
 				</div>
 			</div>
 		</div>
     </div>
+    <div id="forgotPasswordPopup" class="popup-container" style="display:none;">
+	    <div class="popup-content">
+	        <span class="close-button">&times;</span>
+	        <h2>Forgot Password</h2>
+	        <form action="login/update-password" method="post" id="resetPasswordForm">
+	            <input type="email" class="input-style" placeholder="Email" name="email" required>
+	            <input type="password" class="input-style" placeholder="New Password" name="newpass" required>
+	            <button class="button-item" type="submit">Confirm</button>
+	        </form>
+	    </div>
+	</div>
+	{{#if updatePassSuccess}}
+    <div id="updatePassContainer" class="popup-container" style="display:flex;">
+	    <div class="popup-content">
+	        <span class="x-button close-button">&times;</span>
+	        <h2 style="text-align: center"> Password updated successfully!</h2>
+	    </div>
+	</div>
+	{{/if}}
     <script src="scripts/index.js"></script>
 </body>
 </html>

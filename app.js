@@ -24,7 +24,8 @@ server.get('/', (req, res) => {
     res.render('main',{
         layout: 'index',
         error: req.query.error ? "Invalid username or password." : "",
-        signUpError: req.query.signUpError ? "Username already exists." : ""
+        signUpError: req.query.signUpError ? "Username already exists." : "",
+        updatePassSuccess: req.query.updatePassSuccess ? "Password updated successfully!" : "",
     });
 })
 
@@ -50,7 +51,7 @@ server.get('/profile', async (req, res) => {
                     profile_email: profile.profile_email, 
                     admin_access: profile.admin_access, 
                     student_access: profile.student_access, 
-                    profile_picture:profile.profile_picture 
+                    profile_picture: profile.profile_picture 
                 });
 
     } catch (err) {
