@@ -24,8 +24,7 @@ server.get('/', (req, res) => {
     res.render('main',{
         layout: 'index',
         error: req.query.error ? "Invalid username or password." : "",
-        signUpError: req.query.signUpError ? "Username already exists." : "",
-        updatePassSuccess: req.query.updatePassSuccess ? "Password updated successfully!" : "",
+        signUpError: req.query.signUpError ? "Username already exists." : ""
     });
 })
 
@@ -51,7 +50,7 @@ server.get('/profile', async (req, res) => {
                     profile_email: profile.profile_email, 
                     admin_access: profile.admin_access, 
                     student_access: profile.student_access, 
-                    profile_picture: profile.profile_picture 
+                    profile_picture:profile.profile_picture 
                 });
 
     } catch (err) {
@@ -161,7 +160,6 @@ server.get('/profile', async function(req, resp) {
     }
 });
 
-
 server.get('/reserve_seat', async function(req, resp){
     const user = req.query.user
     const profile = await Profile.findOne({account_name : user}).exec();
@@ -170,10 +168,64 @@ server.get('/reserve_seat', async function(req, resp){
             layout: 'reserve_seat',
             title: 'Reserve Seat',
             room_info: data,
-            user: user,
+            user_id: user,
+            user_f: profile.firstname,
+            user_l: profile.lastname,
             admin: profile.admin_access
         });
     }).catch(err => {throw err});
+});
+
+server.post('/create_reservation', (req, resp) => {
+    // console.log("nakapasok sa reserve");
+
+    // console.log(typeof req.body.room_id + " " + req.body.room_id);
+    // console.log(typeof parseInt(req.body.seat_id) + " " + parseInt(req.body.seat_id));
+    // console.log(typeof req.body.fullname + " " + req.body.fullname);
+    // console.log(typeof Boolean(req.body.anon) + " " + Boolean(req.body.anon));
+    // console.log(typeof parseInt(req.body.account_id) + " " + parseInt(req.body.account_id));
+
+    const roomQuery = { 'room-id': req.body.room_id, 'time-slot': req.body.time };
+    
+    roomsModel.findOne(roomQuery).then(function(room){
+    
+        // Iterate over the outermost array
+        for (let i = 0; i < room.seats.length; i++) {
+            const outerArray = room.seats[i];
+            // Iterate over the middle array
+            for (let j = 0; j < outerArray.length; j++) {
+                const middleArray = outerArray[j];
+                // Iterate over the middle array
+                for (let k = 0; k < middleArray.length; k++) {
+                    const object = middleArray[k];
+                    
+                    if(object['seat-id'] === parseInt(req.body.seat_id))
+                    {
+                        console.log(object);
+                        object['is-occupied'] = true;
+                        object['occupant'] = req.body.fullname;
+                        object['is-anon'] = req.body.anon;
+                        object['id-number'] = parseInt(req.body.account_id);
+                        console.log(object);
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // console.log(room);
+        // console.log();
+        // console.log(room.seats);
+
+        room.save().then(function(result) {
+            if(result)
+                console.log('Seat updated successfully!');
+        }).catch(err => {
+            console.error('Error saving room:', err);
+        });
+    }).catch(err => {
+        throw err;
+    });
 });
 
 server.get('/editprofile', async (req, res) => {
@@ -198,6 +250,7 @@ server.get('/editprofile', async (req, res) => {
         res.status(500).send('Error retrieving user profile');
     }
 })
+
 const port = process.env.PORT | 3000;
 server.listen(port, function(){
     console.log('Listening at port '+port);
