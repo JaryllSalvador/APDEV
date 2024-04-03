@@ -2,8 +2,17 @@ const express = require('express');
 const server = express();
 const mongoose = require('./server.js');
 const handlebars = require('express-handlebars');
-
+const session = require('express-session');
 const bodyParser = require('body-parser');
+
+server.use(session({
+    secret: '#LiveLaughLoveGhee',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60*60*1000 }
+}));
+
+
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 
@@ -21,6 +30,13 @@ const { Profile, server: profileRouter } = require('./profile.js');
 server.use('/profile', profileRouter);
 
 server.get('/', (req, res) => {
+
+    req.session.user_id = null;
+    req.session.username = null;
+    req.session.firstname = null;
+    
+    req.session.destroy();
+    
     res.render('main',{
         layout: 'index',
         error: req.query.error ? "Invalid username or password." : "",
@@ -30,47 +46,73 @@ server.get('/', (req, res) => {
 })
 
 server.get('/homepage', (req, res) => {
+    if(req.session.user_id == null){
+        return res.redirect('/')
+    }
+    
     res.render('main',{
-        user : req.query.user,
+        user : req.session.username,
         layout: 'homepage'
     });
 })
 
-server.get('/profile', async (req, res) => {
-    try {
+// server.get('/profile', async (req, res) => {
+//     if(req.session.user_id == null){
+//         return res.redirect('/')
+//     }
+    
+//     try {
 
-        const user = req.query.user
-        console.log(user)
-        const profile = await Profile.findOne({account_name : user}).exec();
-        res.render('main', { 
-                    layout: 'profile', 
-                    user: user, 
-                    firstname: profile.firstname, 
-                    lastname: profile.lastname, 
-                    account_name: profile.account_name, 
-                    profile_email: profile.profile_email, 
-                    admin_access: profile.admin_access, 
-                    student_access: profile.student_access, 
-                    profile_picture: profile.profile_picture 
-                });
+//         const user = req.query.user
+//         console.log(user)
+//         const profile = await Profile.findOne({account_name : user}).exec();
+//         res.render('main', { 
+//                     layout: 'profile', 
+//                     user: user, 
+//                     firstname: profile.firstname, 
+//                     lastname: profile.lastname, 
+//                     account_name: profile.account_name, 
+//                     profile_email: profile.profile_email, 
+//                     admin_access: profile.admin_access, 
+//                     student_access: profile.student_access, 
+//                     profile_picture: profile.profile_picture 
+//                 });
 
-    } catch (err) {
-        console.error('Error retrieving user profile:', err);
-        res.status(500).send('Error retrieving user profile');
-    }
-});
+//     } catch (err) {
+//         console.error('Error retrieving user profile:', err);
+//         res.status(500).send('Error retrieving user profile');
+//     }
+// });
 
 const roomsSchema = new mongoose.Schema({
     "room-id": { type: String },
     "time-slot": { type: String },
-    seats: [[[{ "seat-id": {type: Number}, "seat-order": {type: Number}, "is-occupied": {type: Boolean}, "occupant": {type: String}, "is-anon": {type: Boolean}, "id-number": {type: Number} }]]]
+    seats: 
+    [
+        [
+            [
+                {
+                    "seat-id": {type: Number}, 
+                    "seat-order": {type: Number}, 
+                    "is-occupied": {type: Boolean}, 
+                    "occupant": {type: String}, 
+                    "is-anon": {type: Boolean}, 
+                    "id-number": {type: Number} 
+                }
+            ]
+        ]
+    ]
   },{ versionKey: false });
   
 const roomsModel = mongoose.model('rooms', roomsSchema);
 
 server.get('/search', async (req, resp) => {
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
+    
     try {
-        const user = req.query.user
+        const user = req.session.username
         const profile = await Profile.findOne({account_name : req.query.profile}).exec();
         
         const res = await roomsModel.find({}).lean().exec();
@@ -109,8 +151,12 @@ server.get('/search', async (req, resp) => {
 });
 
 server.get('/profile', async function(req, resp) {
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
+    
     try {
-        const user = req.query.user;
+        const user = req.session.username;
         const profile = await Profile.findOne({account_name : user}).exec();
 
 
@@ -163,7 +209,11 @@ server.get('/profile', async function(req, resp) {
 
 
 server.get('/reserve_seat', async function(req, resp){
-    const user = req.query.user
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
+    
+    const user = req.session.username
     const profile = await Profile.findOne({account_name : user}).exec();
     roomsModel.find({}).lean().then(function(data){
         resp.render('main',{
@@ -177,9 +227,12 @@ server.get('/reserve_seat', async function(req, resp){
 });
 
 server.get('/editprofile', async (req, res) => {
+    if(req.session.user_id == null){
+        return res.redirect('/')
+    }
+    
     try {
-
-        const user = req.query.user
+        const user = req.session.username
         const profile = await Profile.findOne({account_name: user}).exec();
         res.render('main', {
             layout: 'editprofile',
