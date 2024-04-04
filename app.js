@@ -16,7 +16,7 @@ server.use(express.static('public'));
 const login = require('./login.js')
 server.use('/login', login);
 
-const { Profile, server: profileRouter } = require('./public/scripts/profile.js');
+const { Profile, server: profileRouter } = require('./profile.js');
 server.use('/profile', profileRouter);
 
 server.get('/', (req, res) => {
@@ -218,6 +218,35 @@ server.post('/delete-profile', async (req, res) => {
         console.error('Error deleting user profile:', error);
         res.status(500).send('An error occurred while deleting user profile');
     }
+});
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        // dir where files will be saved
+        cb(null, 'public/images');
+    },
+    filename: function (req, file, cb) {
+        // filename
+        cb(null, file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage });
+
+server.post('/uploadProfilePicture', upload.single('picture'), async (req, res) => {
+    console.log(req.file.path)
+    const pfpURL = req.file.path.replace(/\\/g, '/').replace('public', ''); //reverses all slashes
+    const accountname = req.body.account_name;
+
+    const updateUserPicture = await Profile.findOneAndUpdate(
+        { account_name: accountname }, //find by email
+        { profile_picture: pfpURL }, //update url
+        { new: true } //return updated document
+    ).lean();
+
+    res.sendStatus(200);
 });
 const port = process.env.PORT | 3000;
 server.listen(port, function(){
