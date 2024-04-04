@@ -2,11 +2,10 @@ const express = require('express');
 const server = express();
 const mongoose = require('./server.js');
 const handlebars = require('express-handlebars');
-
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-
+const loginModel = require('./models.js');
 server.set('view engine', 'hbs');
 server.engine('hbs', handlebars.engine({
     extname: 'hbs',
@@ -17,7 +16,7 @@ server.use(express.static('public'));
 const login = require('./login.js')
 server.use('/login', login);
 
-const { Profile, server: profileRouter } = require('./profile.js');
+const { Profile, server: profileRouter } = require('./public/scripts/profile.js');
 server.use('/profile', profileRouter);
 
 server.get('/', (req, res) => {
@@ -176,28 +175,50 @@ server.get('/reserve_seat', async function(req, resp){
     }).catch(err => {throw err});
 });
 
-server.get('/editprofile', async (req, res) => {
+server.post('/edit-profile', async (req, res) => {
     try {
 
-        const user = req.query.user
-        const profile = await Profile.findOne({account_name: user}).exec();
-        res.render('main', {
-            layout: 'editprofile',
-            user: user,
-            firstname: profile.firstname, 
-            lastname: profile.lastname,
-            account_name: profile.account_name,
-            profile_email: profile.profile_email,
-            admin_access: profile.admin_access,
-            student_access: profile.student_access,
-            profile_picture: profile.profile_picture
-        });
+        const userfirstname = req.body.firstname;
+        const userlastname =req.body.lastname;
+        const accountname = req.body.account_name;
+        const profileemail = req.body.profile_email;
 
-    } catch (err) {
-        console.error('Error retrieving user profile:', err);
-        res.status(500).send('Error retrieving user profile');
+        const updatedUser = await Profile.findOneAndUpdate(
+            { account_name: accountname },
+            { firstname: userfirstname, lastname: userlastname,profile_email: profileemail}, // update username and desc
+            { new: true } // return updated document
+        );
+
+
+        if (updatedUser) {
+            console.log(`User with account name ${accountname} edited successfully.`);
+            res.status(200).send('Profile edited successfully');
+        } else {
+            console.log(`User with account name ${accountname} not found.`);
+            res.status(404).send('User not found');
+        }
+    } catch (error) {
+        console.error('Error editing user profile:', error);
+        res.status(500).send('An error occurred while editing user profile');
     }
-})
+});
+server.post('/delete-profile', async (req, res) => {
+    try {
+        const accountname = req.body.account_name;
+        const user = await Profile.findOneAndDelete({ account_name: accountname });
+        const login = await loginModel.findOneAndDelete({ user: accountname });
+        if (user) {
+            console.log(`User with account ${accountname} deleted successfully.`);
+            res.status(200).send('Profile deleted successfully');
+        } else {
+            console.log(`User with account ${accountname} not found.`);
+            res.status(404).send('User not found');
+        }
+    } catch (error) {
+        console.error('Error deleting user profile:', error);
+        res.status(500).send('An error occurred while deleting user profile');
+    }
+});
 const port = process.env.PORT | 3000;
 server.listen(port, function(){
     console.log('Listening at port '+port);

@@ -48,9 +48,17 @@ div > button { font-family: 'Montserrat', sans-serif; }
 
 .profile-img {
     border-radius: 50%;
-    width: 180px;
-    margin-top: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    object-fit: cover; /* Ensures the image covers the entire container */
 }
+
 
 .handle {
     margin-top: 20px;
@@ -70,10 +78,16 @@ div > button { font-family: 'Montserrat', sans-serif; }
     margin-bottom: 5px;
 }
 
-.name {
+.firstname {
+    font-weight: bold;
+    font-size: 24px;
+
+}
+.lastname {
     font-weight: bold;
     font-size: 24px;
     margin: 0;
+    padding-right: 410px;
 }
 
 .edit-button,
@@ -168,3 +182,55 @@ div > button { font-family: 'Montserrat', sans-serif; }
     border-radius: 5px;
     cursor: pointer;
 }
+.image-upload {
+    position: relative; /* Added for easier positioning of overlay */
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+    margin: 100px auto 0px auto;
+    overflow: hidden;
+}
+
+.image-upload > input {
+    display: none;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out;
+    color: white;
+}
+
+/* Pseudo-element for blackening the image */
+.image-upload::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 50%; /* Ensures the blackening effect covers the circular container */
+}
+
+.image-upload:hover .overlay {
+    opacity: 1; /* Displayed on hover */
+}
+
+.image-upload:hover::before {
+    opacity: 0.5; /* Blackens the image on hover */
+}
+

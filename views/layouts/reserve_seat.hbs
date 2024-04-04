@@ -18,7 +18,7 @@
 <body>
     {{> header this}}
 
-    <div class="body-container" account-id="{{user}}" is-admin="{{admin}}">
+    <div class="body-container" account-id="{{account_name}}" is-admin="{{admin}}">
         {{#each room_info}}
             <div class="body-container">
                 <div id="{{room-id}}-{{time-slot}}" class="reserve-screen bounded-box room-slot">
