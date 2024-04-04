@@ -2,11 +2,10 @@ const express = require('express');
 const server = express();
 const mongoose = require('./server.js');
 const handlebars = require('express-handlebars');
-
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-
+const loginModel = require('./models.js');
 server.set('view engine', 'hbs');
 server.engine('hbs', handlebars.engine({
     extname: 'hbs',
@@ -24,7 +23,8 @@ server.get('/', (req, res) => {
     res.render('main',{
         layout: 'index',
         error: req.query.error ? "Invalid username or password." : "",
-        signUpError: req.query.signUpError ? "Username already exists." : ""
+        signUpError: req.query.signUpError ? "Username already exists." : "",
+        updatePassSuccess: req.query.updatePassSuccess ? "Password updated successfully!" : "",
     });
 })
 
@@ -50,7 +50,7 @@ server.get('/profile', async (req, res) => {
                     profile_email: profile.profile_email, 
                     admin_access: profile.admin_access, 
                     student_access: profile.student_access, 
-                    profile_picture:profile.profile_picture 
+                    profile_picture: profile.profile_picture 
                 });
 
     } catch (err) {
@@ -160,6 +160,95 @@ server.get('/profile', async function(req, resp) {
     }
 });
 
+
+server.get('/reserve_seat', async function(req, resp){
+    const user = req.query.user
+    const profile = await Profile.findOne({account_name : user}).exec();
+    roomsModel.find({}).lean().then(function(data){
+        resp.render('main',{
+            layout: 'reserve_seat',
+            title: 'Reserve Seat',
+            room_info: data,
+            user: user,
+            admin: profile.admin_access
+        });
+    }).catch(err => {throw err});
+});
+
+server.post('/edit-profile', async (req, res) => {
+    try {
+
+        const userfirstname = req.body.firstname;
+        const userlastname =req.body.lastname;
+        const accountname = req.body.account_name;
+        const profileemail = req.body.profile_email;
+
+        const updatedUser = await Profile.findOneAndUpdate(
+            { account_name: accountname },
+            { firstname: userfirstname, lastname: userlastname,profile_email: profileemail}, // update username and desc
+            { new: true } // return updated document
+        );
+
+
+        if (updatedUser) {
+            console.log(`User with account name ${accountname} edited successfully.`);
+            res.status(200).send('Profile edited successfully');
+        } else {
+            console.log(`User with account name ${accountname} not found.`);
+            res.status(404).send('User not found');
+        }
+    } catch (error) {
+        console.error('Error editing user profile:', error);
+        res.status(500).send('An error occurred while editing user profile');
+    }
+});
+server.post('/delete-profile', async (req, res) => {
+    try {
+        const accountname = req.body.account_name;
+        const user = await Profile.findOneAndDelete({ account_name: accountname });
+        const login = await loginModel.findOneAndDelete({ user: accountname });
+        if (user) {
+            console.log(`User with account ${accountname} deleted successfully.`);
+            res.status(200).send('Profile deleted successfully');
+        } else {
+            console.log(`User with account ${accountname} not found.`);
+            res.status(404).send('User not found');
+        }
+    } catch (error) {
+        console.error('Error deleting user profile:', error);
+        res.status(500).send('An error occurred while deleting user profile');
+    }
+});
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        // dir where files will be saved
+        cb(null, 'public/images');
+    },
+    filename: function (req, file, cb) {
+        // filename
+        cb(null, file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage });
+
+server.post('/uploadProfilePicture', upload.single('picture'), async (req, res) => {
+    console.log(req.file.path)
+    const pfpURL = req.file.path.replace(/\\/g, '/').replace('public', ''); //reverses all slashes
+    const accountname = req.body.account_name;
+
+    const updateUserPicture = await Profile.findOneAndUpdate(
+        { account_name: accountname }, //find by email
+        { profile_picture: pfpURL }, //update url
+        { new: true } //return updated document
+    ).lean();
+
+    res.sendStatus(200);
+});
+
 server.get('/reserve_seat', async function(req, resp){
     const user = req.query.user
     const profile = await Profile.findOne({account_name : user}).exec();
@@ -261,29 +350,6 @@ server.post('/create_reservation', (req, resp) => {
         throw err;
     });
 });
-
-server.get('/editprofile', async (req, res) => {
-    try {
-
-        const user = req.query.user
-        const profile = await Profile.findOne({account_name: user}).exec();
-        res.render('main', {
-            layout: 'editprofile',
-            user: user,
-            firstname: profile.firstname, 
-            lastname: profile.lastname,
-            account_name: profile.account_name,
-            profile_email: profile.profile_email,
-            admin_access: profile.admin_access,
-            student_access: profile.student_access,
-            profile_picture: profile.profile_picture
-        });
-
-    } catch (err) {
-        console.error('Error retrieving user profile:', err);
-        res.status(500).send('Error retrieving user profile');
-    }
-})
 
 const port = process.env.PORT | 3000;
 server.listen(port, function(){
