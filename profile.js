@@ -60,5 +60,4 @@ server.post('/create-user', async (req, res) => {
         res.status(500).send('Error creating user');
     }
 });
-
 module.exports = { Profile, server }
