@@ -248,6 +248,109 @@ server.post('/uploadProfilePicture', upload.single('picture'), async (req, res) 
 
     res.sendStatus(200);
 });
+
+server.get('/reserve_seat', async function(req, resp){
+    const user = req.query.user
+    const profile = await Profile.findOne({account_name : user}).exec();
+    roomsModel.find({}).lean().then(function(data){
+        resp.render('main',{
+            layout: 'reserve_seat',
+            title: 'Reserve Seat',
+            room_info: data,
+            user: user,
+            user_f: profile.firstname,
+            user_l: profile.lastname,
+            admin: profile.admin_access
+        });
+    }).catch(err => {throw err});
+});
+
+server.post('/create_reservation', (req, resp) => {
+    const roomQuery = { 'room-id': req.body.room_id, 'time-slot': req.body.time };
+    
+    roomsModel.findOne(roomQuery).then(function(room){
+    
+        let object, found = 0;
+        // Iterate over the outermost array
+        for (let i = 0; i < room.seats.length && !found; i++) {
+            const outerArray = room.seats[i];
+            // Iterate over the middle array
+            for (let j = 0; j < outerArray.length && !found; j++) {
+                const middleArray = outerArray[j];
+                // Iterate over the middle array
+                for (let k = 0; k < middleArray.length && !found; k++) {
+                    object = middleArray[k];
+                    
+                    if(object['seat-id'] === parseInt(req.body.seat_id))
+                    {
+                        object['is-occupied'] = true;
+                        object['occupant'] = req.body.fullname;
+                        object['is-anon'] = req.body.anon;
+                        object['id-number'] = parseInt(req.body.account_id);
+                        found = 1;
+                    }
+                }
+            }
+        }
+
+        const newRoom = new roomsModel(room);
+
+        newRoom.save().then(function(result) {
+            if(result)
+                console.log('Seat updated successfully!');
+                //console.log(object);
+                resp.send({ seat: object });
+            }).catch(err => {
+                console.error('Error saving room:', err);
+            });
+        }).catch(err => {
+            throw err;
+        });
+    });
+    
+    server.post('/delete_reservation', (req, resp) => {
+        const roomQuery = { 'room-id': req.body.room_id, 'time-slot': req.body.time };
+        
+        roomsModel.findOne(roomQuery).then(function(room){
+            
+            let object, found = 0;
+            // Iterate over the outermost array
+            for (let i = 0; i < room.seats.length && !found; i++) {
+                const outerArray = room.seats[i];
+                // Iterate over the middle array
+                for (let j = 0; j < outerArray.length && !found; j++) {
+                    const middleArray = outerArray[j];
+                    // Iterate over the middle array
+                    for (let k = 0; k < middleArray.length && !found; k++) {
+                        object = middleArray[k];
+                        
+                        if(object['seat-id'] === parseInt(req.body.seat_id))
+                        {
+                            object['is-occupied'] = false;
+                            object['occupant'] = "none";
+                            object['is-anon'] = false;
+                            object['id-number'] = null;
+                            found = 1;
+                        }
+                    }
+                }
+            }
+            
+            const newRoom = new roomsModel(room);
+            
+
+        newRoom.save().then(function(result) {
+            if(result)
+                console.log('Seat deleted successfully!');
+            resp.send({ seat: object });
+        }).catch(err => {
+            console.error('Error saving room:', err);
+        });
+    }).catch(err => {
+        throw err;
+    });
+});
+
 const port = process.env.PORT | 3000;
 server.listen(port, function(){
     console.log('Listening at port '+port);
