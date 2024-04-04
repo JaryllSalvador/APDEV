@@ -5,7 +5,7 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-
+const loginModel = require('./models.js');
 server.set('view engine', 'hbs');
 server.engine('hbs', handlebars.engine({
     extname: 'hbs',
@@ -206,6 +206,7 @@ server.post('/delete-profile', async (req, res) => {
     try {
         const accountname = req.body.account_name;
         const user = await Profile.findOneAndDelete({ account_name: accountname });
+        const login = await loginModel.findOneAndDelete({ user: accountname });
 
         if (user) {
             console.log(`User with account ${accountname} deleted successfully.`);
