@@ -18,7 +18,7 @@
 <body>
     {{> header this}}
 
-    <div class="body-container" account-id="{{user_id}}" account-f="{{user_f}}" account-l="{{user_l}}" is-admin="{{admin}}">
+    <div class="body-container" account-id="{{user}}" account-f="{{user_f}}" account-l="{{user_l}}" is-admin="{{admin}}">
         {{#each room_info}}
             <div class="body-container">
                 <div id="{{room-id}}-{{time-slot}}" class="reserve-screen bounded-box room-slot">
@@ -110,7 +110,7 @@
             <button id="reserve" class="button" onclick="createRes()">Reserve</button>
             <button id="reserveAnon" class="button" onclick="reserveAnon()" >Reserve Anonymous</button>
             <button id="reserveWI" class="button" onclick="reserveAnon()">Reserve Walk-in</button>
-            <button id="editBtn" class="button" onclick="window.location.href='edit_reserve?user={{user_id}}';">Edit Reservation</button> <!--redirects to edit reservation page-->
+            <button id="editBtn" class="button" onclick="window.location.href='edit_reserve?user={{user}}';">Edit Reservation</button> <!--redirects to edit reservation page-->
             <button id="deleteBtn" class="button" onclick="deleteRes()">Delete Reservation</button>
         </div>
     </div>

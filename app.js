@@ -168,7 +168,7 @@ server.get('/reserve_seat', async function(req, resp){
             layout: 'reserve_seat',
             title: 'Reserve Seat',
             room_info: data,
-            user_id: user,
+            user: user,
             user_f: profile.firstname,
             user_l: profile.lastname,
             admin: profile.admin_access
@@ -177,49 +177,83 @@ server.get('/reserve_seat', async function(req, resp){
 });
 
 server.post('/create_reservation', (req, resp) => {
-    // console.log("nakapasok sa reserve");
-
-    // console.log(typeof req.body.room_id + " " + req.body.room_id);
-    // console.log(typeof parseInt(req.body.seat_id) + " " + parseInt(req.body.seat_id));
-    // console.log(typeof req.body.fullname + " " + req.body.fullname);
-    // console.log(typeof Boolean(req.body.anon) + " " + Boolean(req.body.anon));
-    // console.log(typeof parseInt(req.body.account_id) + " " + parseInt(req.body.account_id));
-
     const roomQuery = { 'room-id': req.body.room_id, 'time-slot': req.body.time };
     
     roomsModel.findOne(roomQuery).then(function(room){
     
+        let object, found = 0;
         // Iterate over the outermost array
-        for (let i = 0; i < room.seats.length; i++) {
+        for (let i = 0; i < room.seats.length && !found; i++) {
             const outerArray = room.seats[i];
             // Iterate over the middle array
-            for (let j = 0; j < outerArray.length; j++) {
+            for (let j = 0; j < outerArray.length && !found; j++) {
                 const middleArray = outerArray[j];
                 // Iterate over the middle array
-                for (let k = 0; k < middleArray.length; k++) {
-                    const object = middleArray[k];
+                for (let k = 0; k < middleArray.length && !found; k++) {
+                    object = middleArray[k];
                     
                     if(object['seat-id'] === parseInt(req.body.seat_id))
                     {
-                        console.log(object);
                         object['is-occupied'] = true;
                         object['occupant'] = req.body.fullname;
                         object['is-anon'] = req.body.anon;
                         object['id-number'] = parseInt(req.body.account_id);
-                        console.log(object);
-                        break;
+                        found = 1;
                     }
                 }
             }
         }
-        
-        // console.log(room);
-        // console.log();
-        // console.log(room.seats);
 
-        room.save().then(function(result) {
+        const newRoom = new roomsModel(room);
+
+        newRoom.save().then(function(result) {
             if(result)
                 console.log('Seat updated successfully!');
+                //console.log(object);
+                resp.send({ seat: object });
+            }).catch(err => {
+                console.error('Error saving room:', err);
+            });
+        }).catch(err => {
+            throw err;
+        });
+    });
+    
+    server.post('/delete_reservation', (req, resp) => {
+        const roomQuery = { 'room-id': req.body.room_id, 'time-slot': req.body.time };
+        
+        roomsModel.findOne(roomQuery).then(function(room){
+            
+            let object, found = 0;
+            // Iterate over the outermost array
+            for (let i = 0; i < room.seats.length && !found; i++) {
+                const outerArray = room.seats[i];
+                // Iterate over the middle array
+                for (let j = 0; j < outerArray.length && !found; j++) {
+                    const middleArray = outerArray[j];
+                    // Iterate over the middle array
+                    for (let k = 0; k < middleArray.length && !found; k++) {
+                        object = middleArray[k];
+                        
+                        if(object['seat-id'] === parseInt(req.body.seat_id))
+                        {
+                            object['is-occupied'] = false;
+                            object['occupant'] = "none";
+                            object['is-anon'] = false;
+                            object['id-number'] = null;
+                            found = 1;
+                        }
+                    }
+                }
+            }
+            
+            const newRoom = new roomsModel(room);
+            
+
+        newRoom.save().then(function(result) {
+            if(result)
+                console.log('Seat deleted successfully!');
+            resp.send({ seat: object });
         }).catch(err => {
             console.error('Error saving room:', err);
         });
