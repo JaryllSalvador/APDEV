@@ -10,6 +10,14 @@ server.set('view engine', 'hbs');
 server.engine('hbs', handlebars.engine({
     extname: 'hbs',
 }));
+  
+const session = require('express-session');
+server.use(session({
+    secret: '#LiveLaughLoveGhee',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60*60*1000 }
+}));
 
 server.use(express.static('public'));
 
@@ -19,7 +27,15 @@ server.use('/login', login);
 const { Profile, server: profileRouter } = require('./profile.js');
 server.use('/profile', profileRouter);
 
+
 server.get('/', (req, res) => {
+
+    req.session.user_id = null;
+    req.session.username = null;
+    req.session.firstname = null;
+    
+    req.session.destroy();
+    
     res.render('main',{
         layout: 'index',
         error: req.query.error ? "Invalid username or password." : "",
@@ -29,36 +45,16 @@ server.get('/', (req, res) => {
 })
 
 server.get('/homepage', (req, res) => {
+    if(req.session.user_id == null){
+        return res.redirect('/')
+    }
+    
     res.render('main',{
-        user : req.query.user,
+        user : req.session.username,
         layout: 'homepage'
     });
 })
-
-server.get('/profile', async (req, res) => {
-    try {
-
-        const user = req.query.user
-        console.log(user)
-        const profile = await Profile.findOne({account_name : user}).exec();
-        res.render('main', { 
-                    layout: 'profile', 
-                    user: user, 
-                    firstname: profile.firstname, 
-                    lastname: profile.lastname, 
-                    account_name: profile.account_name, 
-                    profile_email: profile.profile_email, 
-                    admin_access: profile.admin_access, 
-                    student_access: profile.student_access, 
-                    profile_picture: profile.profile_picture 
-                });
-
-    } catch (err) {
-        console.error('Error retrieving user profile:', err);
-        res.status(500).send('Error retrieving user profile');
-    }
-});
-
+  
 const roomsSchema = new mongoose.Schema({
     "room-id": { type: String },
     "time-slot": { type: String },
@@ -67,9 +63,13 @@ const roomsSchema = new mongoose.Schema({
   
 const roomsModel = mongoose.model('rooms', roomsSchema);
 
-server.get('/search', async (req, resp) => {
+  server.get('/search', async (req, resp) => {
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
+    
     try {
-        const user = req.query.user
+        const user = req.session.username
         const profile = await Profile.findOne({account_name : req.query.profile}).exec();
         
         const res = await roomsModel.find({}).lean().exec();
@@ -106,10 +106,14 @@ server.get('/search', async (req, resp) => {
         resp.status(500).send('Error retrieving user profile:');
     }
 });
-
+  
 server.get('/profile', async function(req, resp) {
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
+    
     try {
-        const user = req.query.user;
+        const user = req.session.username;
         const profile = await Profile.findOne({account_name : user}).exec();
 
 
@@ -161,8 +165,14 @@ server.get('/profile', async function(req, resp) {
 });
 
 
+
 server.get('/reserve_seat', async function(req, resp){
-    const user = req.query.user
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
+    
+    const user = req.session.username
+    
     const profile = await Profile.findOne({account_name : user}).exec();
     roomsModel.find({}).lean().then(function(data){
         resp.render('main',{

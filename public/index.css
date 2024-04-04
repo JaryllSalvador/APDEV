@@ -39,7 +39,14 @@ a {
     font-size: 14px;
     text-decoration: none;
 }
-        
+       
+.p-checkbox {
+    font-size:11px;
+    text-align: start;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
 .container {
     background: #ffffff;
     border-radius: 10px;
@@ -75,7 +82,6 @@ a {
     border-radius: 6px;
     padding: 12px 15px;
     margin: 5px 0;
-    width: 100%;
     letter-spacing: 0.15px;
     outline: none;
     transition: 0.25s ease;
@@ -99,6 +105,15 @@ a {
 .form-container .input-control .error {
     color: #ff3860;
     font-size: 9px;
+}
+
+.form-container input[type="checkbox"] {
+    margin-right: 2px; 
+    display: inline-block; 
+    vertical-align: middle; 
+    outline: 1px solid #4e5157;
+    accent-color: #0052cc;
+      
 }
 
 .form-container button, button {
