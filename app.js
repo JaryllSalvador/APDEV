@@ -164,27 +164,6 @@ server.get('/profile', async function(req, resp) {
     }
 });
 
-
-
-server.get('/reserve_seat', async function(req, resp){
-    if(req.session.user_id == null){
-        return resp.redirect('/')
-    }
-    
-    const user = req.session.username
-    
-    const profile = await Profile.findOne({account_name : user}).exec();
-    roomsModel.find({}).lean().then(function(data){
-        resp.render('main',{
-            layout: 'reserve_seat',
-            title: 'Reserve Seat',
-            room_info: data,
-            user: user,
-            admin: profile.admin_access
-        });
-    }).catch(err => {throw err});
-});
-
 server.post('/edit-profile', async (req, res) => {
     try {
 
@@ -260,7 +239,10 @@ server.post('/uploadProfilePicture', upload.single('picture'), async (req, res) 
 });
 
 server.get('/reserve_seat', async function(req, resp){
-    const user = req.query.user
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
+    const user = req.session.username
     const profile = await Profile.findOne({account_name : user}).exec();
     roomsModel.find({}).lean().then(function(data){
         resp.render('main',{
