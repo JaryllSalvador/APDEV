@@ -6,18 +6,21 @@ function toggleEditMode() {
     const profileemail = document.getElementById('profileemail')
     const accountname = document.getElementById('accountname');
     const editProfile = document.querySelector('.edit-button')
+    const deleteButton = document.querySelector('.delete-button');
 
     if (firstname.contentEditable == 'false' || !firstname.hasAttribute("contentEditable") || !firstname.hasAttribute("contenteditable") ) {
         firstname.contentEditable = true;
         lastname.contentEditable = true;
         profileemail.contentEditable = true;
         editProfile.textContent = 'Save Account';
+        deleteButton.style.display = 'block'; // Show delete button
     } else {
         // disable edit
         firstname.contentEditable = false;
         lastname.contentEditable = false;
         profileemail.contentEditable = false;
         editProfile.textContent = 'Edit Account';
+        deleteButton.style.display = 'none'; // Hide delete button
 
         //for editing the db itself
         fetch('/edit-profile', {
@@ -46,24 +49,29 @@ function toggleEditMode() {
 }
 function deleteProfile() {
     const accountname = document.getElementById('accountname');
-    // AJAX req to delete profile
-    fetch('/delete-profile', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({account_name: accountname.textContent}) // pass email of user to be deleted (key)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to delete profile');
-            }
-            // action after deletion
-            window.location.href = "/";
+    // Show confirmation dialog
+    const confirmDelete = confirm("Are you sure you want to delete your account?");
+
+    if (confirmDelete) {
+        // User confirmed deletion, proceed with AJAX request
+        fetch('/delete-profile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({account_name: accountname.textContent}) // pass email of user to be deleted (key)
         })
-        .catch(error => {
-            console.error('Error deleting profile:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete profile');
+                }
+                // action after deletion
+                window.location.href = "/";
+            })
+            .catch(error => {
+                console.error('Error deleting profile:', error);
+            });
+    }
 }
     const pfpUpload = document.getElementById('file-input');
     function pfpUploadClick () {
@@ -126,3 +134,4 @@ function deleteProfile() {
                 console.error('Error during profile picture upload:', error);
             });
     }
+
