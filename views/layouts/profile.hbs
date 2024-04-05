@@ -16,7 +16,7 @@
             <img src="images/logo.png" alt="" class="logo">comluv.
         </div>
         <div class="image-upload">
-            <label for="file-input">
+            <label for="file-input" >
                 <img id="profilepic" class="profile-img" src="{{profile_picture}}" alt="Profile Picture"/>
                 <div class="overlay">CHANGE IMAGE</div>
             </label>
@@ -27,7 +27,7 @@
                 <div>ADMIN ACCESS</div>
             {{else}}
                 <div>STUDENT ACCESS</div>
-        {{/if}}
+            {{/if}}
 
         </div>
     </div>
@@ -35,8 +35,10 @@
     <div class="profile-info">
         <div class="name-container">
             <h2 class="firstname">{{firstname}}</h2> <h2 class="lastname">{{lastname}}</h2>
-            <button class="edit-button" onclick="toggleEditMode()">Edit Account</button>
-            <button class="delete-button" onclick="deleteProfile()">DELETE</button>
+            <div class="button-container">
+                <button class="edit-button" onclick="toggleEditMode()">Edit Account</button>
+                <button class="delete-button" onclick="deleteProfile()" style="display: none;">Delete Account</button>
+            </div>
         </div>
         <p class="description">Username: <span id="accountname" class="description">{{account_name}}</span>
         </p>
@@ -46,7 +48,7 @@
 
     <!-- Current Reservation Section -->
     <div class="reservation">
-
+    
     {{#if admin_access}}
         {{#each admin_reservations as |a_res|}}
             <div class="reservation-item">
@@ -84,7 +86,6 @@
             </div>
         {{/each}}
     {{/if}}
-
     </div>
     <script src="scripts/profile.js"></script>
 </body>

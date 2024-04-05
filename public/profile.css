@@ -71,25 +71,24 @@ div > button { font-family: 'Montserrat', sans-serif; }
     position: relative;
 }
 
+
+
 .name-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
 }
 
 .firstname {
     font-weight: bold;
     font-size: 24px;
-
+    margin-right: 5px;
 }
+
 .lastname {
     font-weight: bold;
     font-size: 24px;
     margin: 0;
-    padding-right: 410px;
 }
-
 .edit-button,
 .button,
 .delete-button {
@@ -234,3 +233,15 @@ div > button { font-family: 'Montserrat', sans-serif; }
     opacity: 0.5; /* Blackens the image on hover */
 }
 
+.reservation {
+    display: flex;
+    justify-content: space-between; /* Aligns items to opposite sides */
+}
+
+.reservation-header {
+    margin: 0; /* Remove default margin */
+}
+
+.edit-button-container {
+    display: inline-block;
+}

@@ -12,6 +12,8 @@ let fullname = account_f.concat(" ", account_l);
 let seats = Array.from(document.getElementsByClassName('seat'));
 let availableSeats = Array(seats.length).fill(null);
 
+let current_seat_id = 0;
+
 let id, room, time;
 
 for (let i = 0; i < availableSeats.length; i++) {
@@ -46,7 +48,9 @@ const reserve_seat = () => {
 
 function seatClicked(e) {
     id = e.target.id;
+    current_seat_id = id;
     let editBtn = document.getElementById('editBtn');
+    let editBtn2 = document.getElementById('editBtn2');
     let deleteBtn = document.getElementById('deleteBtn');
     let reserve = document.getElementById('reserve');
     let reserveAnon = document.getElementById('reserveAnon');
@@ -80,6 +84,7 @@ function seatClicked(e) {
                 reserve.style.display = 'none';
                 reserveAnon.style.display = 'none';
                 editBtn.style.display = 'none';
+                editBtn2.style.display = 'block';
                 deleteBtn.style.display = 'block';
             }
             else 
@@ -87,6 +92,7 @@ function seatClicked(e) {
                 reserve.style.display = 'none';
                 reserveAnon.style.display = 'none';
                 editBtn.style.display = 'none';
+                editBtn2.style.display = 'none';
                 deleteBtn.style.display = 'none';
             }
         }
@@ -115,6 +121,7 @@ function seatClicked(e) {
     else reserveAnon.style.display = 'block';
 
     editBtn.style.display = 'none';
+    editBtn2.style.display = 'none';
     deleteBtn.style.display = 'none';
 }
 
@@ -123,6 +130,7 @@ $(document).ready(function() {
     $('#reserveAnon').hide();
     $('#reserveWI').hide();
     $('#editBtn').hide();
+    $('#editBtn2').hide();
     $('#deleteBtn').hide();
 
     $('#rooms, #time-slots').on('change', function() {
@@ -162,6 +170,7 @@ $(document).ready(function() {
 
     document.getElementById('deleteBtn').addEventListener('click', function() {
         $('#editBtn').hide();
+        $('#editBtn2').hide();
         $('#deleteBtn').hide();
         $('#seat-number').text('No seat selected.');
     });
@@ -265,19 +274,83 @@ document.querySelector(".close").addEventListener("click", function() {
 
 
 function editRes() {
-    $.post('edit_reservation',{ 
-        room_id: room, time: time, seat_id: id, fullname: fullname, anon: false, account_id: account_id
-    }, function(data, status){
-        if(status === 'success'){ 
-            console.log(data.seat);
-            availableSeats[data.seat['seat-id']].set("is_occupied", data.seat['is-occupied']);
-            availableSeats[data.seat['seat-id']].set("name", data.seat['occupant']);
-            availableSeats[data.seat['seat-id']].set("user_id", data.seat['id-number']);
-            availableSeats[data.seat['seat-id']].set("is_anon", data.seat['is-anon']);
-            console.log(availableSeats[data.seat['seat-id']]);
-            seatnum = Number(data.seat['seat-order']) + 1;
-            reserve_seat();
-            alert("Successfully reserved seat #"+ seatnum);
+
+    const oldSeatId = current_seat_id;
+    // console.log(oldSeatId + " " +)
+    // Display a message prompting the user to select a new seat
+    alert("Please select a new seat.");
+    
+    updateReservation(oldSeatId);
+
+    // Add event listeners to seats for seat selection
+    // seats.forEach((seat, index) => {
+    //     seat.addEventListener('click', function() {
+    //         // Check if the seat is available for reservation
+    //         if (!availableSeats[index].get("is_occupied")) {
+    //             // Update the reservation in the database
+    //             updateReservation(index, oldSeatId);
+
+    //         } else {
+    //             // Display an error message if the seat is already occupied
+    //             alert("Selected seat is already occupied. Please choose another seat.");
+    //         }
+    //     });
+    // });
+}
+
+function updateReservation(oldSeatId) {
+    // Get the ID of the previously selected seat
+    console.log("oldid in UR:" + oldSeatId);
+
+    // Delete the old reservation in the database
+    $.post('delete_reservation', { 
+        room_id: room, 
+        time: time, 
+        seat_id: oldSeatId 
+    }, function(data, status) {
+        if (status === 'success') { 
+            // Update the availableSeats array for the old seat
+
+            seats.forEach((seat, index) => {
+                seat.addEventListener('click', function() {
+                    // Check if the seat is available for reservation
+                    if (!availableSeats[index].get("is_occupied")) {
+                        // Update the reservation in the database
+                        availableSeats[oldSeatId].set("is_occupied", false);
+                        availableSeats[oldSeatId].set("name", "none");
+                        availableSeats[oldSeatId].set("user_id", null);
+                        availableSeats[oldSeatId].set("is_anon", false);
+
+                        // Create a new reservation for the new seat in the database
+                        $.post('create_reservation', { 
+                            room_id: room, 
+                            time: time, 
+                            seat_id: index, 
+                            fullname: fullname, 
+                            anon: false, 
+                            account_id: account_id 
+                        }, function(data, status) {
+                            if (status === 'success') { 
+                                // Update the availableSeats array for the new seat
+                                availableSeats[index].set("is_occupied", data.seat['is-occupied']);
+                                availableSeats[index].set("name", data.seat['occupant']);
+                                availableSeats[index].set("user_id", data.seat['id-number']);
+                                availableSeats[index].set("is_anon", data.seat['is-anon']);
+
+                                // Update the UI to reflect the new reservation
+                                reserve_seat();
+
+                                // Display a success message
+                                alert("Successfully edited reservation. Seat #" + (Number(data.seat['seat-order']) + 1) + " is now reserved.");
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        // Display an error message if the seat is already occupied
+                        alert("Selected seat is already occupied. Please choose another seat.");
+                    }
+                });
+            });
         }
-    });//post
+    });
 }
