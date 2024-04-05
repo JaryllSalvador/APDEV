@@ -20,6 +20,7 @@ body {
 h1 {
     font-weight: bold;
     margin: 0;
+    text-align: center;
 }
 
 p {
@@ -59,7 +60,7 @@ a {
     min-width: 50%;
 }
 
-.form-container {
+.form-container{ 
     background: #ffffff;
     display: flex;
     flex-direction: column;
@@ -96,15 +97,15 @@ a {
     outline: 0; 
 }
 
-.form-container .input-control.success input {
+.form-container .input-control.success input, .signup-input-control.success.image input {
     border-color: #09c372; 
 }
 
-.form-container .input-control.error input {
+.form-container .input-control.error input, .signup-input-control.error input {
     border-color: #ff3860; 
 }
 
-.form-container .input-control .error {
+.form-container .input-control .error, .signup-input-control .error {
     color: #ff3860;
     font-size: 9px;
 }
@@ -170,10 +171,11 @@ button.over-btn {
     border: 1px solid #195092;
     background-color: #0052cc;
     margin-top: 10px;
+    margin-left: 23%;
 }
 
 .signup-container .error {
-    font-size: px;
+    font-size: 9px;
     flex-direction: column;
     margin-bottom: 10px;
     color: red;
@@ -182,6 +184,7 @@ button.over-btn {
 .login-container button {
     border: 1px solid #195092;
     background-color: #0052cc;
+    margin-left: 5%;
 }
 
 .login-container .forgot {

@@ -187,7 +187,7 @@ div > button { font-family: 'Montserrat', sans-serif; }
     width: 170px;
     border-radius: 50%;
     box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
-    margin: 100px auto 0px auto;
+    margin: 10px auto 0px auto;
     overflow: hidden;
 }
 
