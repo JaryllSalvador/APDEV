@@ -42,12 +42,12 @@
         <h2 class="--name">Current Reservation</h2>
         {{#each reservations as |res|}}
             <div class="--reservation-item">
-                <p>Room ID: {{res.room-id}}</p>
-                <p>Time Slot: {{res.time-format}}</p>
+                <p>Room ID: {{res.room}}</p>
+                <p>Time Slot: {{res.time}}</p>
                 <table>
                     <tbody>
                             <tr>
-                                <td>Seat Number: {{res.seats.seat-order}}</td>
+                                <td>Seat Number: {{res.seat}}</td>
                             </tr>
                     </tbody>
                 </table>
