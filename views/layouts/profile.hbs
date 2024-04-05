@@ -49,13 +49,15 @@
 
     <!-- Current Reservation Section -->
     <div class="reservation">
-    
     {{#if admin_access}}
+        <div class="name-container-reserve">
+            <h2>All Reservations</h2>
+            <button class="edit-button" onclick="window.location.href='reserve_seat';">Edit Reservation</button>
+        </div>
         {{#each admin_reservations as |a_res|}}
             <div class="reservation-item">
                 <div class="name-container-reserve">
                     <h2>{{a_res.occupant}}</h2>
-                    <button class="edit-button" onclick="">Edit Reservation</button>
                 </div>
                 <p>Room ID: {{a_res.room}}</p>
                 <p>Time Slot: {{a_res.time}}</p>
