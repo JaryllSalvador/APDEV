@@ -87,6 +87,8 @@ const roomsModel = mongoose.model('rooms', roomsSchema);
             })
         })
         
+        console.log("HELLOSDFISDJFISJDF" + user_reservations);
+
         resp.render('main', {
             layout: 'search',
             profile: req.query.profile,
