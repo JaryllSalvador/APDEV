@@ -95,6 +95,8 @@ const roomsModel = mongoose.model('rooms', roomsSchema);
 
         //console.log(user_reservations);
         
+        console.log("HELLOSDFISDJFISJDF" + user_reservations);
+
         resp.render('main', {
             layout: 'search',
             profile: req.query.profile,
