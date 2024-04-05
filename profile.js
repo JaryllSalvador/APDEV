@@ -47,7 +47,9 @@ server.post('/create-user', async (req, res) => {
                 });
                 await newLogin.save();
         
-                res.redirect(`/homepage?user=${req.body.account_name}`)
+                req.session.user_id = login._id
+                req.session.username = login.user
+                res.redirect(`/homepage`)
             }
         });
                 
@@ -58,5 +60,4 @@ server.post('/create-user', async (req, res) => {
         res.status(500).send('Error creating user');
     }
 });
-
 module.exports = { Profile, server }

@@ -18,7 +18,7 @@
                             var searchTerm = document.getElementById("searchInput").value;
 
                             if (searchTerm.trim() !== '') {
-                                window.location.href = `http://localhost:3000/search?user={{user}}&profile=${encodeURIComponent(searchTerm)}`;
+                                window.location.href = `http://localhost:3000/search?profile=${encodeURIComponent(searchTerm)}`;
                             } else {
                                 alert("Please enter a search term.");
                             }
@@ -28,7 +28,7 @@
                     <!-- Home link -->
                     <li class="nav-item">
                         {{#if user }}
-                            <a class="nav-link" href="homepage?user={{user}}">Home</a>
+                            <a class="nav-link" href="homepage">Home</a>
 
                         {{ else }}
                             <a class="nav-link" href="homepage">Home</a>
@@ -37,7 +37,7 @@
                     <!-- Reserve link -->
                     <li class="nav-item">
                         {{#if user }}
-                            <a class="nav-link" href="reserve_seat?user={{user}}">Reserve</a>
+                            <a class="nav-link" href="reserve_seat">Reserve</a>
 
                         {{else}}
                             <a class="nav-link" href="reserve_seat">Reserve</a>
@@ -46,12 +46,7 @@
                     </li>
                     <!-- About link -->
                     <li class="nav-item">
-                        {{#if user }}
-                            <a class="nav-link" href="homepage?user={{user}}#about">About</a>
-                        {{else}}
                             <a class="nav-link" href="homepage#about">About</a>
-
-                        {{/if}}
                     </li>
                     <!-- Profile dropdown -->
                     <li class="nav-item dropdown">
@@ -61,11 +56,11 @@
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <!-- View Profile option -->
-{{#if user }}
-                            <a class="dropdown-item" href="profile?user={{user}}">View Profile</a>
-    <!-- Log Out option -->
-    <a class="dropdown-item" href="/">Log Out</a>
-{{/if}}
+                        {{#if user }}
+                            <a class="dropdown-item" href="profile">View Profile</a>
+                            <!-- Log Out option -->
+                            <a class="dropdown-item" href="/?logout=true">Log Out</a>
+                        {{/if}}
 
                         </div>
                     </li>

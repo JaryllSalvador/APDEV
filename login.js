@@ -6,17 +6,24 @@ const loginModel = require('./models.js');
 const profileModel = require('./public/scripts/profile.js');
 
 
-server.post('/read-user', (req, resp) => {
+server.post('/read-user', async (req, resp) => {
     let errors = ''
     const searchQuery = { user: req.body.user };
     
     loginModel.findOne(searchQuery).then(function(login){
         if(login != undefined && login._id != null){
-            bcrypt.compare(req.body.pass, login.pass, function(err, isMatch) {
+            bcrypt.compare(req.body.pass, login.pass, async function(err, isMatch) {
                 if (err) throw err;
 
                 if (isMatch) {
-                    resp.redirect(`/homepage?user=${req.body.user}`);
+                    console.log(req.body)
+                    req.session.user_id = login._id
+                    req.session.username = login.user
+                    
+                    if(req.body.rememberMe != null){
+                        req.session.cookie.maxAge = 3*7*24*60*60000
+                    }
+                    resp.redirect(`/homepage`);
                 } else {
                     resp.redirect('/?error=true'); 
                 }

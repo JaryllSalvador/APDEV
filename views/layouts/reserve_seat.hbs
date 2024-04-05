@@ -18,7 +18,20 @@
 <body>
     {{> header this}}
 
-    <div class="body-container" account-id="{{user}}" is-admin="{{admin}}">
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closeEditPopUp()">&times;</span>
+    <form id="popupForm">
+      <label for="id">ID Number:</label>
+      <input type="text" id="id" name="id" required><br><br>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+
+    <div class="body-container" account-id="{{user}}" account-f="{{user_f}}" account-l="{{user_l}}" is-admin="{{admin}}">
         {{#each room_info}}
             <div class="body-container">
                 <div id="{{room-id}}-{{time-slot}}" class="reserve-screen bounded-box room-slot">
@@ -107,11 +120,11 @@
                 </script>
             </div>
             <p id="seat-number">No seat selected.</p>
-            <button id="reserve" class="button">Reserve</button>
-            <button id="reserveAnon" class="button">Reserve Anonymous</button>
-            <button id="reserveWI" class="button">Reserve Walk-in</button>
-            <button id="editBtn" class="button">Edit Reservation</button>
-            <button id="deleteBtn" class="button">Delete Reservation</button>
+            <button id="reserve" class="button" onclick="createRes()">Reserve</button>
+            <button id="reserveAnon" class="button" onclick="reserveAnon()" >Reserve Anonymous</button>
+            <button id="reserveWI" class="button" onclick="openEditPopUp()">Reserve Walk-in</button>
+            <button id="editBtn" class="button" onclick="openEditPopUp()">Edit Reservation</button> <!--redirects to edit reservation page-->
+            <button id="deleteBtn" class="button" onclick="deleteRes()">Delete Reservation</button>
         </div>
     </div>
 

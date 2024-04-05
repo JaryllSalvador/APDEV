@@ -18,27 +18,27 @@
 			<form action="profile/create-user" method="post" name="sign-up-form">
 				<h1>Create Account</h1>
 				
-				<div class="input-control">
+				<div class="signup-input-control">
 					<input type="text" placeholder="First Name" name="firstname"/>
 					<div class="error"></div>
 				</div>
 				
-				<div class="input-control">
+				<div class="signup-input-control">
 					<input type="text" placeholder="Last Name" name="lastname"/>
 					<div class="error"></div>
 				</div>
 				
-				<div class="input-control">
+				<div class="signup-input-control">
 					<input type="text" placeholder="Username" name="account_name"/>
 					<div class="error"></div>
 				</div>
 				
-				<div class="input-control">
+				<div class="signup-input-control">
 					<input type="email" placeholder="Email" name="profile_email"/>
 					<div class="error"></div>
 				</div>
 				
-				<div class="input-control">
+				<div class="signup-input-control">
 					<input type="password" placeholder="Password" name="password"/>
 					<div class="error"></div>
 				</div>
@@ -60,6 +60,9 @@
 					<input type="password" placeholder="Password" name="pass" />
 					<div class="error"></div>
 				</div>
+				
+				{{!-- <input type="checkbox" class="input-checkbox" id="rememberMe" name="rememberMe" value="rememberMe"> --}}
+				<p class="p-checkbox"> <input type="checkbox" class="input-checkbox" id="rememberMe" name="rememberMe" value="rememberMe"> Remember Me </p>
 				
 				<a href="#" class="error">{{error}}</a> 
 				<a href="#" class="forgot">Forgot your password?</a> 
