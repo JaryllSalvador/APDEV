@@ -79,7 +79,7 @@ function seatClicked(e) {
             {
                 reserve.style.display = 'none';
                 reserveAnon.style.display = 'none';
-                editBtn.style.display = 'block';
+                editBtn.style.display = 'none';
                 deleteBtn.style.display = 'block';
             }
             else 
