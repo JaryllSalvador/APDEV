@@ -167,10 +167,20 @@ div > button { font-family: 'Montserrat', sans-serif; }
     color: #0052cc;
 }
 
-.button-container {
+.button-container1 {
     position: absolute;
     top: 10px;
     right: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.button-container2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .button {
@@ -180,7 +190,9 @@ div > button { font-family: 'Montserrat', sans-serif; }
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 5px;
 }
+
 .image-upload {
     position: relative; /* Added for easier positioning of overlay */
     height: 170px;
@@ -235,13 +247,15 @@ div > button { font-family: 'Montserrat', sans-serif; }
 
 .reservation {
     display: flex;
-    justify-content: space-between; /* Aligns items to opposite sides */
+    flex-direction: column;
 }
 
 .reservation-header {
     margin: 0; /* Remove default margin */
 }
 
-.edit-button-container {
-    display: inline-block;
+.name-container-reserve {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
