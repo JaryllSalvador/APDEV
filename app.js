@@ -78,14 +78,22 @@ const roomsModel = mongoose.model('rooms', roomsSchema);
             s.seats.forEach(a => { 
                 a.forEach(b => {
                     b.forEach(c => {
-                        if(c['id-number'] == user) {
-                            user_reservations.push(s)
-                            s.seats = c
+                        if(c['id-number'] == profile.account_name && c['is-anon'] == false) {
+                            let seat_reservation = { room: s['room-id'], time: s['time-format'], seat: c['seat-order'] }
+                            user_reservations.push(seat_reservation);
                         }
                     })
                 })
             })
         })
+
+        //console.log(user_reservations);
+
+        user_reservations.forEach(a => {
+            a['seat'] += 1;
+        })
+
+        //console.log(user_reservations);
         
         resp.render('main', {
             layout: 'search',
@@ -119,29 +127,34 @@ server.get('/profile', async function(req, resp) {
 
         const res = await roomsModel.find({}).lean().exec();
         let user_reservations = [];
-
-                
-        admin_res = res;
         let admin_reservations = [];
-
-
         res.forEach(s => { 
             s.seats.forEach(a => { 
                 a.forEach(b => {
                     b.forEach(c => {
                         if(c['id-number'] == user) {
-                            user_reservations.push(s)
-                            s.seats = c
+                            let user_reservation = { room: s['room-id'], time: s['time-format'], seat: c['seat-order'] }
+                            user_reservations.push(user_reservation);
                         }
                         if(c['is-occupied'] == true) {
-                            admin_reservations.push(c)
+                            let admin_reservation = { occupant: c['occupant'], room: s['room-id'], time: s['time-format'], seat: c['seat-order'] }
+                            admin_reservations.push(admin_reservation);
                         }
                     })
                 })
             })
         })
 
-        console.log(admin_reservations);
+        user_reservations.forEach(a => {
+            a['seat'] += 1;
+        })
+
+        admin_reservations.forEach(a => {
+            a['seat'] += 1;
+        })
+        
+        //console.log(user_reservations);
+        //console.log(admin_reservations);
 
         resp.render('main', {
             layout: 'profile',
