@@ -220,3 +220,64 @@ function deleteRes() {
         }
     });//post
 }
+
+
+function openEditPopUp() {
+    document.getElementById("popupForm").reset();
+    document.getElementById("popup").style.display = "block";
+}
+
+function closeEditPopUp() {
+    document.getElementById("popup").style.display = "none";
+}
+
+document.getElementById("popupForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    
+    // Get form values
+    var account_id = document.getElementById("id").value;
+    var fullname = document.getElementById("name").value;
+    
+    // Do something with the values (e.g., send them to server)
+    $.post('create_reservation',{ 
+        room_id: room, time: time, seat_id: id, fullname: fullname, anon: false, account_id: account_id
+    }, function(data, status){
+        if(status === 'success'){ 
+            console.log(data.seat);
+            availableSeats[data.seat['seat-id']].set("is_occupied", data.seat['is-occupied']);
+            availableSeats[data.seat['seat-id']].set("name", data.seat['occupant']);
+            availableSeats[data.seat['seat-id']].set("user_id", data.seat['id-number']);
+            availableSeats[data.seat['seat-id']].set("is_anon", data.seat['is-anon']);
+            console.log(availableSeats[data.seat['seat-id']]);
+            seatnum = Number(data.seat['seat-order']) + 1;
+            reserve_seat();
+            alert("Successfully edited seat #"+ seatnum);
+        }
+    });//post
+    
+    // Close the popup
+    closeEditPopUp();
+});
+
+document.querySelector(".close").addEventListener("click", function() {
+    closePopup();
+  });
+
+
+function editRes() {
+    $.post('edit_reservation',{ 
+        room_id: room, time: time, seat_id: id, fullname: fullname, anon: false, account_id: account_id
+    }, function(data, status){
+        if(status === 'success'){ 
+            console.log(data.seat);
+            availableSeats[data.seat['seat-id']].set("is_occupied", data.seat['is-occupied']);
+            availableSeats[data.seat['seat-id']].set("name", data.seat['occupant']);
+            availableSeats[data.seat['seat-id']].set("user_id", data.seat['id-number']);
+            availableSeats[data.seat['seat-id']].set("is_anon", data.seat['is-anon']);
+            console.log(availableSeats[data.seat['seat-id']]);
+            seatnum = Number(data.seat['seat-order']) + 1;
+            reserve_seat();
+            alert("Successfully reserved seat #"+ seatnum);
+        }
+    });//post
+}
