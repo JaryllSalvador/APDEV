@@ -180,8 +180,11 @@ server.get('/profile', async function(req, resp) {
 });
 
 server.post('/edit-profile', async (req, res) => {
+    if(req.session.user_id == null){
+        return res.redirect('/')
+    }
+    
     try {
-
         const userfirstname = req.body.firstname;
         const userlastname =req.body.lastname;
         const accountname = req.body.account_name;
@@ -189,8 +192,8 @@ server.post('/edit-profile', async (req, res) => {
 
         const updatedUser = await Profile.findOneAndUpdate(
             { account_name: accountname },
-            { firstname: userfirstname, lastname: userlastname,profile_email: profileemail}, // update username and desc
-            { new: true } // return updated document
+            { firstname: userfirstname, lastname: userlastname,profile_email: profileemail}, 
+            { new: true } 
         );
 
 
@@ -240,9 +243,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 server.post('/uploadProfilePicture', upload.single('picture'), async (req, res) => {
-    console.log(req.file.path)
+    if(req.session.user_id == null){
+        return res.redirect('/')
+    }
     const pfpURL = req.file.path.replace(/\\/g, '/').replace('public', ''); //reverses all slashes
-    const accountname = req.body.account_name;
+    const accountname = req.session.username;
 
     const updateUserPicture = await Profile.findOneAndUpdate(
         { account_name: accountname }, //find by email
@@ -273,6 +278,9 @@ server.get('/reserve_seat', async function(req, resp){
 });
 
 server.post('/create_reservation', (req, resp) => {
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
     const roomQuery = { 'room-id': req.body.room_id, 'time-slot': req.body.time };
     
     roomsModel.findOne(roomQuery).then(function(room){
@@ -313,9 +321,12 @@ server.post('/create_reservation', (req, resp) => {
         }).catch(err => {
             throw err;
         });
-    });
+});
     
-    server.post('/delete_reservation', (req, resp) => {
+server.post('/delete_reservation', (req, resp) => {
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
         const roomQuery = { 'room-id': req.body.room_id, 'time-slot': req.body.time };
         
         roomsModel.findOne(roomQuery).then(function(room){
@@ -359,6 +370,10 @@ server.post('/create_reservation', (req, resp) => {
 });
 
 server.post('/create_reservation2', (req, resp) => {
+    if(req.session.user_id == null){
+        return resp.redirect('/')
+    }
+    
     const roomQuery = { 'room-id': req.body.room_id, 'time-slot': req.body.time };
     
     roomsModel.findOne(roomQuery).then(function(room){
@@ -384,7 +399,7 @@ server.post('/create_reservation2', (req, resp) => {
                     if(object['seat-id'] === parseInt(req.body.seat_id))
                     {
                         object['is-occupied'] = true;
-                        object['occupant'] = req.body.fullname;
+                        object['occupant'] = fullname;
                         object['is-anon'] = req.body.anon;
                         object['id-number'] = parseInt(req.body.account_id);
                         found = 1;

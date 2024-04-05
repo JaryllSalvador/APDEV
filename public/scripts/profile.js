@@ -124,6 +124,7 @@ function deleteProfile() {
                     //upload successful yippieeeeee
                     console.log('Profile picture uploaded successfully');
                     pfpURL.src = '/images/uploads/' + file.name;
+                    location.reload();
                 } else {
                     //upload failed
                     console.error('Profile picture upload failed');

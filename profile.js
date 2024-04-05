@@ -47,8 +47,8 @@ server.post('/create-user', async (req, res) => {
                 });
                 await newLogin.save();
         
-                req.session.user_id = login._id
-                req.session.username = login.user
+                req.session.user_id = newLogin._id
+                req.session.username = newLogin.user
                 res.redirect(`/homepage`)
             }
         });

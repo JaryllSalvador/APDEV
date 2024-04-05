@@ -184,7 +184,7 @@ let seatnum;
 function createRes() {
     $.post('create_reservation',{ 
         room_id: room, time: time, seat_id: id, fullname: fullname, anon: false, account_id: account_id
-    }, function(data, status){
+    }, async function(data, status){
         if(status === 'success'){ 
             console.log(data.seat);
             availableSeats[data.seat['seat-id']].set("is_occupied", data.seat['is-occupied']);
@@ -193,8 +193,8 @@ function createRes() {
             availableSeats[data.seat['seat-id']].set("is_anon", data.seat['is-anon']);
             console.log(availableSeats[data.seat['seat-id']]);
             seatnum = Number(data.seat['seat-order']) + 1;
-            reserve_seat();
-            alert("Successfully reserved seat #"+ seatnum);
+            await reserve_seat()
+            alert("Successfully Reserved Seat #"+ seatnum)
         }
     });//post
 }
@@ -202,7 +202,7 @@ function createRes() {
 function reserveAnon() {
     $.post('create_reservation',{ 
         room_id: room, time: time, seat_id: id, fullname: fullname, anon: true, account_id: account_id
-    }, function(data, status){
+    }, async function(data, status){
         if(status === 'success'){ 
             availableSeats[data.seat['seat-id']].set("is_occupied", data.seat['is-occupied']);
             availableSeats[data.seat['seat-id']].set("name", data.seat['occupant']);
@@ -210,7 +210,7 @@ function reserveAnon() {
             availableSeats[data.seat['seat-id']].set("is_anon", data.seat['is-anon']);
             seatnum = Number(data.seat['seat-order']) + 1;
             reserve_seat();
-            alert("Successfully reserved seat #"+ seatnum);
+            await alert("Successfully reserved seat #"+ seatnum);
         }
     });//post
 }
@@ -282,51 +282,30 @@ function editRes() {
 
     const oldSeatId = current_seat_id;
     // console.log(oldSeatId + " " +)
-    // Display a message prompting the user to select a new seat
     alert("Please select a new seat.");
     
     updateReservation(oldSeatId);
 
-    // Add event listeners to seats for seat selection
-    // seats.forEach((seat, index) => {
-    //     seat.addEventListener('click', function() {
-    //         // Check if the seat is available for reservation
-    //         if (!availableSeats[index].get("is_occupied")) {
-    //             // Update the reservation in the database
-    //             updateReservation(index, oldSeatId);
-
-    //         } else {
-    //             // Display an error message if the seat is already occupied
-    //             alert("Selected seat is already occupied. Please choose another seat.");
-    //         }
-    //     });
-    // });
 }
 
 function updateReservation(oldSeatId) {
-    // Get the ID of the previously selected seat
     console.log("oldid in UR:" + oldSeatId);
 
-    // Delete the old reservation in the database
     $.post('delete_reservation', { 
         room_id: room, 
         time: time, 
         seat_id: oldSeatId 
     }, function(data, status) {
         if (status === 'success') { 
-            // Update the availableSeats array for the old seat
 
             seats.forEach((seat, index) => {
                 seat.addEventListener('click', function() {
-                    // Check if the seat is available for reservation
                     if (!availableSeats[index].get("is_occupied")) {
-                        // Update the reservation in the database
                         availableSeats[oldSeatId].set("is_occupied", false);
                         availableSeats[oldSeatId].set("name", "none");
                         availableSeats[oldSeatId].set("user_id", null);
                         availableSeats[oldSeatId].set("is_anon", false);
 
-                        // Create a new reservation for the new seat in the database
                         $.post('create_reservation', { 
                             room_id: room, 
                             time: time, 
@@ -336,22 +315,18 @@ function updateReservation(oldSeatId) {
                             account_id: account_id 
                         }, function(data, status) {
                             if (status === 'success') { 
-                                // Update the availableSeats array for the new seat
                                 availableSeats[index].set("is_occupied", data.seat['is-occupied']);
                                 availableSeats[index].set("name", data.seat['occupant']);
                                 availableSeats[index].set("user_id", data.seat['id-number']);
                                 availableSeats[index].set("is_anon", data.seat['is-anon']);
 
-                                // Update the UI to reflect the new reservation
                                 reserve_seat();
 
-                                // Display a success message
                                 alert("Successfully edited reservation. Seat #" + (Number(data.seat['seat-order']) + 1) + " is now reserved.");
                                 location.reload();
                             }
                         });
                     } else {
-                        // Display an error message if the seat is already occupied
                         alert("Selected seat is already occupied. Please choose another seat.");
                     }
                 });
