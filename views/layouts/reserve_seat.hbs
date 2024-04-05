@@ -54,7 +54,7 @@
         {{/each}}
 
         <div class="details-section">
-            <h1>Create Reservation</h1>
+            <h1 id="create-reservation-text">Create Reservation</h1>
             <div class="time-slot select-wrapper">
                 <p>Classroom: </p>
                 <select name="Rooms" id="rooms" class="select-wrapper"></select>
@@ -124,6 +124,7 @@
             <button id="reserveAnon" class="button" onclick="reserveAnon()" >Reserve Anonymous</button>
             <button id="reserveWI" class="button" onclick="openEditPopUp()">Reserve Walk-in</button>
             <button id="editBtn" class="button" onclick="openEditPopUp()">Edit Reservation</button> <!--redirects to edit reservation page-->
+            <button id="editBtn2" class="button" onclick="editRes()">Edit Reservation 2</button> <!--redirects to edit reservation page-->
             <button id="deleteBtn" class="button" onclick="deleteRes()">Delete Reservation</button>
         </div>
     </div>
