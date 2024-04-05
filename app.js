@@ -345,6 +345,66 @@ server.post('/create_reservation', (req, resp) => {
     });
 });
 
+server.post('/create_reservation2', (req, resp) => {
+    const roomQuery = { 'room-id': req.body.room_id, 'time-slot': req.body.time };
+    
+    roomsModel.findOne(roomQuery).then(function(room){
+
+        const profile = Profile.findOne({account_name : req.body.account_id}).then(function(profile){
+
+            
+        if (profile !== null) {
+            let fullname = profile.lastname + " " + profile.firstname;
+
+    
+        let object, found = 0;
+        // Iterate over the outermost array
+        for (let i = 0; i < room.seats.length && !found; i++) {
+            const outerArray = room.seats[i];
+            // Iterate over the middle array
+            for (let j = 0; j < outerArray.length && !found; j++) {
+                const middleArray = outerArray[j];
+                // Iterate over the middle array
+                for (let k = 0; k < middleArray.length && !found; k++) {
+                    object = middleArray[k];
+                    
+                    if(object['seat-id'] === parseInt(req.body.seat_id))
+                    {
+                        object['is-occupied'] = true;
+                        object['occupant'] = req.body.fullname;
+                        object['is-anon'] = req.body.anon;
+                        object['id-number'] = parseInt(req.body.account_id);
+                        found = 1;
+                    }
+                }
+            }
+        }
+
+        const newRoom = new roomsModel(room);
+
+        newRoom.save().then(function(result) {
+            if(result)
+                console.log('Seat updated successfully!');
+                //console.log(object);
+                resp.send({ seat: object, valid_status: true, fullname: fullname });
+            }).catch(err => {
+                console.error('Error saving room:', err);
+            });
+        }
+        else {
+            console.log("INVALID IDDDD");
+            resp.send({ valid_status: false});
+        }
+        }).catch(err => {
+            console.log("invalid id");
+            throw err;
+        });
+
+        }).catch(err => {
+            throw err;
+        });
+    });
+
 const port = process.env.PORT | 3000;
 server.listen(port, function(){
     console.log('Listening at port '+port);
