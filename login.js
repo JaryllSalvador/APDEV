@@ -3,7 +3,7 @@ const express = require('express');
 const bcrypt = require('bcrypt'); 
 const server = express.Router();
 const loginModel = require('./models.js');
-const profileModel = require('./profile.js');
+const profileModel = require('./public/scripts/profile.js');
 
 
 server.post('/read-user', async (req, resp) => {

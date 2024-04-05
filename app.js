@@ -24,7 +24,7 @@ server.use(express.static('public'));
 const login = require('./login.js')
 server.use('/login', login);
 
-const { Profile, server: profileRouter } = require('./profile.js');
+const { Profile, server: profileRouter } = require('./public/scripts/profile.js');
 server.use('/profile', profileRouter);
 
 
@@ -255,6 +255,52 @@ server.get('/reserve_seat', async function(req, resp){
             admin: profile.admin_access
         });
     }).catch(err => {throw err});
+});
+
+server.post('/edit-profile', async (req, res) => {
+    try {
+
+        const userfirstname = req.body.firstname;
+        const userlastname =req.body.lastname;
+        const accountname = req.body.account_name;
+        const profileemail = req.body.profile_email;
+
+        const updatedUser = await Profile.findOneAndUpdate(
+            { account_name: accountname },
+            { firstname: userfirstname, lastname: userlastname,profile_email: profileemail}, // update username and desc
+            { new: true } // return updated document
+        );
+
+
+        if (updatedUser) {
+            console.log(`User with account name ${accountname} edited successfully.`);
+            res.status(200).send('Profile edited successfully');
+        } else {
+            console.log(`User with account name ${accountname} not found.`);
+            res.status(404).send('User not found');
+        }
+    } catch (error) {
+        console.error('Error editing user profile:', error);
+        res.status(500).send('An error occurred while editing user profile');
+    }
+});
+server.post('/delete-profile', async (req, res) => {
+    try {
+        const accountname = req.body.account_name;
+        const user = await Profile.findOneAndDelete({ account_name: accountname });
+        const login = await loginModel.findOneAndDelete({ user: accountname });
+
+        if (user) {
+            console.log(`User with account ${accountname} deleted successfully.`);
+            res.status(200).send('Profile deleted successfully');
+        } else {
+            console.log(`User with account ${accountname} not found.`);
+            res.status(404).send('User not found');
+        }
+    } catch (error) {
+        console.error('Error deleting user profile:', error);
+        res.status(500).send('An error occurred while deleting user profile');
+    }
 });
 
 server.post('/create_reservation', (req, resp) => {
